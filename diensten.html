@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Diensten — IT Documentgenerator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0E7FA6; --navy-deep: #0A4E66; --steel: #4FA8C2;
+    --gold: #C17A3D; --gold-deep: #955B26;
+    --bg: #F7F5F0; --white: #FFFFFF; --text: #142B30; --text-muted: #5C7278; --border: #DCE4E6;
+    --serif: 'Source Serif 4', serif; --sans: 'Inter', sans-serif; --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+  a{color:inherit;}
+  .container{max-width:1120px; margin:0 auto; padding:0 1.5rem;}
+
+  nav{position:sticky; top:0; z-index:200; background:rgba(247,245,240,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1120px; margin:0 auto;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--navy); display:flex; align-items:center; gap:8px; text-decoration:none;}
+  .logo-mark{width:24px; height:24px; flex-shrink:0;}
+  .nav-links{display:flex; gap:1.8rem; font-size:13.5px;}
+  .nav-links a{color:var(--text-muted); text-decoration:none;}
+  .nav-links a:hover, .nav-links a.current{color:var(--navy);}
+  .nav-links a.current{font-weight:600;}
+  @media (max-width:820px){ .nav-links{display:none;} }
+  .nav-cta{font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.55rem 1.1rem; border-radius:8px; background:var(--gold-deep); color:#fff; text-decoration:none;}
+  .nav-cta:hover{background:#7a481e;}
+
+  .hero{padding:4rem 0 3rem; text-align:center;}
+  .eyebrow{font-family:var(--mono); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-deep); font-weight:600; margin:0 0 1rem;}
+  .hero h1{font-family:var(--serif); font-weight:700; font-size:clamp(30px,5vw,46px); color:var(--navy-deep); margin:0 0 1.1rem; max-width:720px; margin-left:auto; margin-right:auto;}
+  .hero p{font-size:16px; color:var(--text-muted); max-width:600px; margin:0 auto;}
+
+  .services{padding:1rem 0 3rem; display:grid; grid-template-columns:repeat(3,1fr); gap:1.6rem;}
+  @media (max-width:900px){ .services{grid-template-columns:1fr;} }
+  .service-card{
+    background:var(--white); border:1px solid var(--border); border-radius:14px; padding:1.8rem 1.7rem;
+    display:flex; flex-direction:column;
+  }
+  .service-icon{width:42px; height:42px; border-radius:10px; display:flex; align-items:center; justify-content:center; font-size:20px; margin-bottom:1.1rem;}
+  .service-card h3{font-family:var(--serif); font-weight:700; font-size:19px; color:var(--navy-deep); margin:0 0 .7rem;}
+  .service-card p{font-size:13.5px; color:var(--text-muted); line-height:1.6; margin:0 0 1.1rem; flex-grow:1;}
+  .service-card ul{list-style:none; margin:0 0 1.2rem; padding:0; font-size:13px; color:var(--text-muted);}
+  .service-card li{padding:.35rem 0 .35rem 1.2rem; position:relative; border-top:1px solid var(--border);}
+  .service-card li:first-child{border-top:none;}
+  .service-card li::before{content:'→'; position:absolute; left:0; color:var(--gold);}
+  .service-card .price-tag{font-family:var(--mono); font-size:11.5px; color:var(--navy); font-weight:600; margin-top:auto;}
+
+  .why-strip{background:var(--navy-deep); border-radius:16px; padding:2.6rem 2.4rem; margin:1rem 0 3rem; color:#fff;}
+  .why-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:2rem;}
+  @media (max-width:820px){ .why-grid{grid-template-columns:1fr;} }
+  .why-grid h4{font-family:var(--serif); font-size:17px; margin:0 0 .5rem; color:#fff;}
+  .why-grid p{font-size:13.5px; color:#B9D4DC; margin:0; line-height:1.6;}
+
+  .contact-section{padding:1rem 0 4rem;}
+  .contact-inner{background:var(--white); border:1px solid var(--border); border-radius:16px; padding:2.4rem 2.6rem; max-width:640px; margin:0 auto;}
+  .contact-inner h2{font-family:var(--serif); font-weight:700; font-size:24px; color:var(--navy-deep); margin:0 0 .5rem; text-align:center;}
+  .contact-inner > p{font-size:13.5px; color:var(--text-muted); text-align:center; margin:0 0 1.6rem;}
+  .form-field{margin-bottom:1rem;}
+  .form-field label{display:block; font-size:12.5px; font-weight:600; color:var(--text); margin-bottom:.35rem;}
+  .form-field input, .form-field select, .form-field textarea{
+    width:100%; padding:.65rem .8rem; border:1.5px solid var(--border); border-radius:8px; font-family:var(--sans); font-size:14px;
+    color:var(--text); background:var(--bg);
+  }
+  .form-field textarea{min-height:90px; resize:vertical;}
+  .form-field input:focus, .form-field select:focus, .form-field textarea:focus{outline:none; border-color:var(--navy);}
+  .submit-btn{
+    width:100%; padding:.85rem; border:none; border-radius:8px; background:var(--gold); color:#fff;
+    font-family:var(--sans); font-weight:600; font-size:14.5px; cursor:pointer; margin-top:.5rem;
+  }
+  .submit-btn:hover{background:var(--gold-deep);}
+  .form-note{font-size:11.5px; color:var(--text-muted); text-align:center; margin-top:.9rem;}
+
+  footer{border-top:1px solid var(--border); padding:2.2rem 0; text-align:center; font-size:12px; color:var(--text-muted);}
+  footer a{color:var(--navy); text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.75 2C6.75 1.31 7.31 0.75 8 0.75H13.5L18 5.25V21.25C18 21.94 17.44 22.5 16.75 22.5H8C7.31 22.5 6.75 21.94 6.75 21.25V2Z" fill="#0E7FA6"/><path d="M13.5 0.75V4.25C13.5 4.66 13.84 5 14.25 5H18L13.5 0.75Z" fill="#B4652E"/><path d="M9.25 13.25L11.25 15.25L15 10.75" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>IT Documentgenerator</a>
+    <div class="nav-links">
+      <a href="index.html#documenten">Documenten</a>
+      <a href="kennisbank.html">Kennisbank</a>
+      <a href="diensten.html" class="current">Diensten</a>
+      <a href="over-mij.html">Over mij</a>
+    </div>
+    <a href="sla-generator.html" class="nav-cta">Start je document</a>
+  </div>
+</nav>
+
+<div class="container">
+
+  <section class="hero">
+    <p class="eyebrow">Bemiddeling</p>
+    <h1>De juiste freelancer, zonder zelf te hoeven zoeken</h1>
+    <p>Voor vraagstukken die verder gaan dan een document alleen — coaching, IT-advies, of maatwerk — koppel ik je aan een ervaren, zelfstandige professional uit mijn netwerk. De opdracht loopt vervolgens rechtstreeks tussen jou en die freelancer; ik ben alleen de tussenpersoon die de match maakt.</p>
+  </section>
+
+  <section class="services">
+
+    <div class="service-card">
+      <div class="service-icon" style="background:#F3E2D2;">🧭</div>
+      <h3>Coaching</h3>
+      <p>Een coachingstraject van zes sessies, opgebouwd van kennismaking tot borging — uitgevoerd door een zelfstandig coach uit mijn netwerk die bij jouw vraag past.</p>
+      <ul>
+        <li>Zes sessies van 60–90 minuten</li>
+        <li>Persoonlijk, één-op-één, met een ervaren coach</li>
+        <li>Gericht op loopbaan, werkdruk of persoonlijke ontwikkeling</li>
+      </ul>
+      <p class="price-tag">Tarief van de coach + bemiddelingsfee, vooraf transparant</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon" style="background:#E1F0F5;">🛠</div>
+      <h3>IT-advies &amp; informatiemanagement</h3>
+      <p>Voor informatiebeleid, applicatielandschap, SLA's of ISO/NIS2-voorbereiding koppel ik je aan een zelfstandig IT-professional met de juiste ervaring voor jouw vraagstuk.</p>
+      <ul>
+        <li>Informatiebeleid en applicatielandschap op orde brengen</li>
+        <li>SLA's en contracten die aansluiten bij jouw dienstverlening</li>
+        <li>Voorbereiding op ISO- of NIS2-naleving</li>
+      </ul>
+      <p class="price-tag">Tarief van de freelancer + bemiddelingsfee, vooraf transparant</p>
+    </div>
+
+    <div class="service-card">
+      <div class="service-icon" style="background:#EAE6D9;">📄</div>
+      <h3>Maatwerk documenten</h3>
+      <p>Soms is een gegenereerd startdocument niet genoeg. Voor complexere situaties koppel ik je aan een freelancer die het document volledig op maat opstelt en met je doorspreekt.</p>
+      <ul>
+        <li>Contracten en SLA's op maat</li>
+        <li>Beleidsdocumenten afgestemd op jouw organisatie</li>
+        <li>Eén gesprek om scope en verwachtingen af te stemmen</li>
+      </ul>
+      <p class="price-tag">Tarief van de freelancer + bemiddelingsfee, vooraf transparant</p>
+    </div>
+
+  </section>
+
+  <section class="why-strip">
+    <div class="why-grid">
+      <div>
+        <h4>Zorgvuldig geselecteerd netwerk</h4>
+        <p>Geen willekeurige match — ik werk alleen met freelancers waar ik zelf achter sta, en verbind ze aan opdrachten die bij hen passen.</p>
+      </div>
+      <div>
+        <h4>Eerlijke bemiddelingsfee</h4>
+        <p>Een gangbare fee van 10 à 15% van de opdrachtwaarde, altijd vooraf transparant met beide partijen besproken — geen verborgen marges, geen uitbuiting van de freelancer.</p>
+      </div>
+      <div>
+        <h4>Rechtstreekse overeenkomst</h4>
+        <p>Na de match sluit je de opdracht rechtstreeks met de freelancer af. Ik ben geen partij bij die overeenkomst en sta niet tussen jullie in.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="contact-section">
+    <div class="contact-inner">
+      <h2>Neem contact op</h2>
+      <p>Vertel kort waarmee ik je kan helpen — je ontvangt binnen enkele werkdagen een reactie.</p>
+      <form id="contactForm">
+        <div class="form-field">
+          <label for="contactName">Naam</label>
+          <input type="text" id="contactName" required>
+        </div>
+        <div class="form-field">
+          <label for="contactEmail">E-mailadres</label>
+          <input type="email" id="contactEmail" required>
+        </div>
+        <div class="form-field">
+          <label for="contactService">Waar gaat het om?</label>
+          <select id="contactService">
+            <option value="Coachingstraject">Coachingstraject</option>
+            <option value="IT-advies & informatiemanagement">IT-advies &amp; informatiemanagement</option>
+            <option value="Maatwerk document">Maatwerk document</option>
+            <option value="Iets anders">Iets anders</option>
+          </select>
+        </div>
+        <div class="form-field">
+          <label for="contactMessage">Je vraag</label>
+          <textarea id="contactMessage" required></textarea>
+        </div>
+        <button type="submit" class="submit-btn">Verstuur</button>
+        <p class="form-note">Werkt via mailto: — opent je eigen mailapp met dit bericht klaar om te versturen.</p>
+      </form>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  Javabird79 · KVK 90050150 · BTW NL004789855B21 · <a href="gebruiksvoorwaarden.html">Gebruiksvoorwaarden</a><br>
+  Javabird79 treedt bij deze diensten uitsluitend op als bemiddelaar tussen klant en freelancer. De uiteindelijke opdracht en overeenkomst komen rechtstreeks tot stand tussen de klant en de zelfstandige professional; Javabird79 is daarbij geen partij en aanvaardt geen aansprakelijkheid voor de uitvoering, kwaliteit of gevolgen van het werk van de freelancer. De bemiddelingsfee (doorgaans 10–15% van de opdrachtwaarde) wordt vooraf transparant met beide partijen besproken.
+</footer>
+
+<script>
+  document.getElementById('contactForm').addEventListener('submit', function(e){
+    e.preventDefault();
+    var name = document.getElementById('contactName').value;
+    var email = document.getElementById('contactEmail').value;
+    var service = document.getElementById('contactService').value;
+    var message = document.getElementById('contactMessage').value;
+    var subject = encodeURIComponent('Aanvraag: ' + service);
+    var body = encodeURIComponent(
+      'Naam: ' + name + '\n' +
+      'E-mail: ' + email + '\n' +
+      'Onderwerp: ' + service + '\n\n' +
+      message
+    );
+    if(window.trackEvent) window.trackEvent('Contactformulier verstuurd', {dienst: service});
+    window.location.href = 'mailto:estiksma@gmail.com?subject=' + subject + '&body=' + body;
+  });
+</script>
+
+</body>
+</html>

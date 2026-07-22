@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Gebruiksvoorwaarden — IT Documentgenerator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0E7FA6; --navy-deep: #0A4E66; --gold: #C17A3D; --gold-deep: #955B26;
+    --bg: #F7F5F0; --white: #FFFFFF; --text: #142B30; --text-muted: #5C7278; --border: #DCE4E6;
+    --serif: 'Source Serif 4', serif; --sans: 'Inter', sans-serif; --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+  a{color:inherit;}
+  nav{position:sticky; top:0; z-index:200; background:rgba(247,245,240,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1120px; margin:0 auto;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--navy); display:flex; align-items:center; gap:8px; text-decoration:none;}
+  .logo-mark{width:24px; height:24px; flex-shrink:0;}
+  .nav-links{display:flex; gap:1.8rem; font-size:13.5px;}
+  .nav-links a{color:var(--text-muted); text-decoration:none;}
+  .nav-links a:hover, .nav-links a.current{color:var(--navy);}
+  .nav-links a.current{font-weight:600;}
+  @media (max-width:820px){ .nav-links{display:none;} }
+  .nav-cta{font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.55rem 1.1rem; border-radius:8px; background:var(--gold-deep); color:#fff; text-decoration:none;}
+  .nav-cta:hover{background:#7a481e;}
+
+  .doc-head{max-width:720px; margin:3rem auto 0; padding:0 1.5rem;}
+  .doc-head .eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-deep); font-weight:600; margin:0 0 .8rem;}
+  .doc-head h1{font-family:var(--serif); font-weight:700; font-size:clamp(28px,4.5vw,40px); color:var(--navy-deep); margin:0 0 .6rem;}
+  .doc-head .meta{font-size:13px; color:var(--text-muted); padding-bottom:1.8rem; border-bottom:1px solid var(--border);}
+
+  .doc-body{max-width:720px; margin:0 auto; padding:2rem 1.5rem 4rem; font-size:15.5px; line-height:1.75;}
+  .doc-body h2{font-family:var(--serif); font-weight:700; font-size:21px; color:var(--navy-deep); margin:2.2rem 0 .9rem;}
+  .doc-body h2 .num{font-family:var(--mono); font-size:14px; color:var(--gold-deep); margin-right:.5rem;}
+  .doc-body p{color:var(--text); margin:0 0 1.1rem;}
+  .doc-body ul, .doc-body ol{margin:0 0 1.1rem; padding-left:1.4rem; color:var(--text);}
+  .doc-body li{margin-bottom:.4rem;}
+  .doc-body strong{color:var(--navy-deep);}
+  .toc{background:var(--white); border:1px solid var(--border); border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:2rem;}
+  .toc p{font-family:var(--sans); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted); margin:0 0 .7rem;}
+  .toc ol{margin:0; padding-left:1.3rem; font-size:13.5px; columns:2; column-gap:1.5rem;}
+  .toc li{margin-bottom:.35rem;}
+  .toc a{color:var(--navy); text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+  .notice{
+    background:#FBEEE6; border:1px solid #E3B98C; border-left:4px solid var(--gold-deep); border-radius:8px;
+    padding:1.1rem 1.4rem; margin:0 0 2rem; font-size:13.5px; line-height:1.6;
+  }
+  .notice strong{color:var(--gold-deep);}
+
+  footer{border-top:1px solid var(--border); padding:2.2rem 0; text-align:center; font-size:12px; color:var(--text-muted);}
+  footer a{color:var(--navy); text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.75 2C6.75 1.31 7.31 0.75 8 0.75H13.5L18 5.25V21.25C18 21.94 17.44 22.5 16.75 22.5H8C7.31 22.5 6.75 21.94 6.75 21.25V2Z" fill="#0E7FA6"/><path d="M13.5 0.75V4.25C13.5 4.66 13.84 5 14.25 5H18L13.5 0.75Z" fill="#B4652E"/><path d="M9.25 13.25L11.25 15.25L15 10.75" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>IT Documentgenerator</a>
+    <div class="nav-links">
+      <a href="index.html#documenten">Documenten</a>
+      <a href="kennisbank.html">Kennisbank</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="over-mij.html">Over mij</a>
+    </div>
+    <a href="sla-generator.html" class="nav-cta">Start je document</a>
+  </div>
+</nav>
+
+<div class="doc-head">
+  <p class="eyebrow">Juridisch</p>
+  <h1>Gebruiksvoorwaarden</h1>
+  <p class="meta">Laatst bijgewerkt: juli 2026 · Van toepassing op alle pagina's van deze website, de generator en de kennisbank</p>
+</div>
+
+<div class="doc-body">
+
+  <div class="notice">
+    <strong>Belangrijk om vooraf te weten:</strong> dit is een generieke set gebruiksvoorwaarden, opgesteld als redelijk, gangbaar uitgangspunt — geen door een jurist geverifieerd juridisch document. Voor een waterdichte juridische borging, met name bij commercieel gebruik door derden, is beoordeling door een gekwalificeerde jurist aan te raden.
+  </div>
+
+  <div class="toc">
+    <p>Inhoud</p>
+    <ol>
+      <li><a href="#definities">Definities</a></li>
+      <li><a href="#aanvaarding">Aanvaarding</a></li>
+      <li><a href="#dienst">De dienst</a></li>
+      <li><a href="#gebruik">Toegestaan gebruik</a></li>
+      <li><a href="#gegenereerde">Gegenereerde documenten</a></li>
+      <li><a href="#ie">Intellectueel eigendom</a></li>
+      <li><a href="#privacy">Privacy &amp; gegevensverwerking</a></li>
+      <li><a href="#aansprakelijkheid">Aansprakelijkheid</a></li>
+      <li><a href="#beschikbaarheid">Beschikbaarheid</a></li>
+      <li><a href="#diensten">Bemiddeling naar freelancers</a></li>
+      <li><a href="#wijzigingen">Wijzigingen</a></li>
+      <li><a href="#recht">Toepasselijk recht &amp; geschillen</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </div>
+
+  <h2 id="definities"><span class="num">1.</span>Definities</h2>
+  <p>In deze gebruiksvoorwaarden wordt verstaan onder:</p>
+  <ul>
+    <li><strong>de Dienst:</strong> de website, de documentgenerator, de kennisbank en alle daarbij aangeboden functionaliteit;</li>
+    <li><strong>de Aanbieder:</strong> Javabird79 (Esther Stiksma), KVK 90050150, BTW NL004789855B21;</li>
+    <li><strong>de Gebruiker:</strong> iedere natuurlijke of rechtspersoon die de Dienst raadpleegt of gebruikt;</li>
+    <li><strong>Gegenereerde Documenten:</strong> elk document, checklist, rapport of ander bestand dat via de generator wordt aangemaakt op basis van door de Gebruiker ingevoerde gegevens.</li>
+  </ul>
+
+  <h2 id="aanvaarding"><span class="num">2.</span>Aanvaarding</h2>
+  <p>Door de Dienst te bezoeken, te raadplegen of te gebruiken, aanvaardt de Gebruiker deze gebruiksvoorwaarden in hun geheel. Wie niet met deze voorwaarden instemt, wordt verzocht de Dienst niet te gebruiken.</p>
+
+  <h2 id="dienst"><span class="num">3.</span>De dienst</h2>
+  <p>De Dienst bestaat uit een gratis toegankelijke documentgenerator (documenten, checklists en zelftests), een kennisbank met achtergrondartikelen, en — los daarvan — optionele betaalde diensten zoals coaching en advies. De Dienst wordt aangeboden "as is", zonder enige garantie op volledigheid, actualiteit of geschiktheid voor een specifiek doel.</p>
+
+  <h2 id="gebruik"><span class="num">4.</span>Toegestaan gebruik</h2>
+  <p>De Gebruiker mag de Dienst gebruiken voor persoonlijke of zakelijke doeleinden, binnen de grenzen van deze voorwaarden en de toepasselijke wetgeving. Het is niet toegestaan om:</p>
+  <ul>
+    <li>de Dienst te gebruiken op een wijze die de goede werking ervan verstoort of kan verstoren (bijvoorbeeld door geautomatiseerd, bovenmatig gebruik);</li>
+    <li>de broncode, structuur of onderliggende logica van de Dienst te kopiëren, te decompileren of te herdistribueren als eigen product;</li>
+    <li>de Dienst te gebruiken voor onwettige doeleinden, of voor het aanmaken van documenten met een onrechtmatig of misleidend doel.</li>
+  </ul>
+
+  <h2 id="gegenereerde"><span class="num">5.</span>Gegenereerde documenten</h2>
+  <p>Gegenereerde Documenten zijn generieke hulpmiddelen, uitsluitend ter ondersteuning — nooit leidend. Ze vormen geen professioneel juridisch, fiscaal, arbeidsrechtelijk of ander advies, en geen erkende certificering of formele toetsing, ook niet wanneer een document verwijst naar een norm, wet of standaard. Aan de inhoud van een Gegenereerd Document kunnen geen rechten worden ontleend. De Gebruiker is zelf verantwoordelijk voor het laten controleren van een document door een gekwalificeerde, onafhankelijke professional voordat het bindend wordt gebruikt, gedeeld of ondertekend.</p>
+
+  <h2 id="ie"><span class="num">6.</span>Intellectueel eigendom</h2>
+  <p>Alle intellectuele eigendomsrechten op de Dienst zelf — de website, de generator, de sjablonen, de kennisbankartikelen en de onderliggende programmatuur — berusten bij de Aanbieder, tenzij expliciet anders vermeld. De Gebruiker verkrijgt door gebruik van de Dienst geen enkel recht op deze intellectuele eigendom. Een door de Gebruiker met eigen, ingevoerde gegevens Gegenereerd Document mag door de Gebruiker vrij worden gebruikt voor eigen doeleinden.</p>
+
+  <h2 id="privacy"><span class="num">7.</span>Privacy &amp; gegevensverwerking</h2>
+  <p>De Dienst gebruikt privacy-vriendelijke, cookieloze analytics die geen persoonsgegevens verwerkt, en optioneel — uitsluitend na expliciete toestemming — Google Analytics, dat wel cookies gebruikt. Gegevens die de Gebruiker invoert in de generator worden lokaal in de browser verwerkt om het document op te bouwen, en niet door de Aanbieder opgeslagen op een server, behoudens gegevens die de Gebruiker vrijwillig via het contactformulier verstuurt.</p>
+
+  <h2 id="aansprakelijkheid"><span class="num">8.</span>Aansprakelijkheid</h2>
+  <p>De Aanbieder aanvaardt geen enkele aansprakelijkheid — direct, indirect, of als gevolgschade — voor schade die op enige wijze voortvloeit uit het gebruik van de Dienst, de website of de Gegenereerde Documenten, tenzij deze schade het gevolg is van opzet of bewuste roekeloosheid van de Aanbieder. Voor zover toegestaan onder toepasselijk recht, is de aansprakelijkheid van de Aanbieder in alle gevallen beperkt tot het bedrag dat de Gebruiker in het betreffende geval daadwerkelijk aan de Aanbieder heeft betaald voor de Dienst — wat voor de gratis generator en kennisbank neerkomt op nihil.</p>
+
+  <h2 id="beschikbaarheid"><span class="num">9.</span>Beschikbaarheid</h2>
+  <p>De Dienst wordt vrijwillig en in vrije tijd onderhouden. De Aanbieder streeft naar een goede beschikbaarheid, maar garandeert geen ononderbroken toegang tot de Dienst en is niet verplicht om de Dienst te blijven aanbieden, te onderhouden of te actualiseren.</p>
+
+  <h2 id="diensten"><span class="num">10.</span>Bemiddeling naar freelancers</h2>
+  <p>Naast de gratis Dienst kan de Aanbieder bemiddelen tussen de Gebruiker en zelfstandige professionals (freelancers/zzp'ers) uit het netwerk van de Aanbieder, voor diensten zoals coaching, IT-advies en maatwerkdocumenten. Hierbij gelden de volgende uitgangspunten:</p>
+  <ul>
+    <li>de Aanbieder treedt uitsluitend op als <strong>bemiddelaar</strong> en niet als detacheerder: de Aanbieder is geen partij bij de uiteindelijke overeenkomst tussen de Gebruiker en de freelancer, en verhuurt of factureert geen arbeidskracht door;</li>
+    <li>de opdracht en de daaruit voortvloeiende overeenkomst komen rechtstreeks tot stand tussen de Gebruiker en de freelancer, tegen door hen onderling overeen te komen voorwaarden;</li>
+    <li>de Aanbieder ontvangt voor de bemiddeling een fee, doorgaans <strong>10 tot 15% van de opdrachtwaarde</strong>, die vooraf transparant met beide partijen wordt besproken;</li>
+    <li>de Aanbieder aanvaardt <strong>geen aansprakelijkheid</strong> voor de uitvoering, kwaliteit, tijdigheid of gevolgen van het werk van de freelancer, noch voor geschillen tussen de Gebruiker en de freelancer;</li>
+    <li>de Aanbieder selecteert freelancers zorgvuldig, maar garandeert niet dat een freelancer geschikt is voor elke specifieke opdracht.</li>
+  </ul>
+  <p>Deze bemiddeling valt niet automatisch onder de overige bepalingen van deze gebruiksvoorwaarden, maar onder de specifieke afspraken die per bemiddeling worden gemaakt tussen de Aanbieder, de Gebruiker en de freelancer.</p>
+
+  <h2 id="wijzigingen"><span class="num">11.</span>Wijzigingen</h2>
+  <p>De Aanbieder kan deze gebruiksvoorwaarden, de Dienst, of de inhoud daarvan op elk moment wijzigen. De meest actuele versie van deze voorwaarden staat steeds op deze pagina. Voortgezet gebruik van de Dienst na een wijziging geldt als aanvaarding van de gewijzigde voorwaarden.</p>
+
+  <h2 id="recht"><span class="num">12.</span>Toepasselijk recht &amp; geschillen</h2>
+  <p>Op deze gebruiksvoorwaarden en het gebruik van de Dienst is Nederlands recht van toepassing. Geschillen die hieruit voortvloeien worden bij voorkeur in onderling overleg opgelost; bij uitblijven daarvan is de bevoegde Nederlandse rechter aangewezen.</p>
+
+  <h2 id="contact"><span class="num">13.</span>Contact</h2>
+  <p>Vragen over deze gebruiksvoorwaarden kunnen worden gericht aan <a href="mailto:estiksma@gmail.com">estiksma@gmail.com</a>, of via het <a href="diensten.html">contactformulier</a>.</p>
+
+</div>
+
+<footer>
+  Javabird79 · KVK 90050150 · BTW NL004789855B21 · <a href="over-mij.html">Over mij</a> · <a href="diensten.html">Diensten</a>
+</footer>
+
+</body>
+</html>

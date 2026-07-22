@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De vendor scorecard: leveranciers beoordelen zonder giswerk — Kennisbank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E7FA6; --navy-deep:#0A4E66; --gold:#C17A3D; --gold-deep:#955B26; --ink:#1B2226;
+    --bg:#F7F5F0; --white:#FFFFFF; --text:#142B30; --text-muted:#5C7278; --border:#DCE4E6; --rule:#17242A;
+    --serif:'Source Serif 4', serif; --sans:'Inter', sans-serif; --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+  a{color:inherit;}
+  nav{position:sticky; top:0; z-index:200; background:rgba(247,245,240,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1160px; margin:0 auto;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--navy); display:flex; align-items:center; gap:8px; text-decoration:none;}
+  .logo-mark{width:24px; height:24px; flex-shrink:0;}
+  .nav-links{display:flex; gap:1.8rem; font-size:13.5px;}
+  .nav-links a{color:var(--text-muted); text-decoration:none;}
+  .nav-links a:hover, .nav-links a.current{color:var(--navy);}
+  .nav-links a.current{font-weight:600;}
+  .nav-cta{font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.55rem 1.1rem; border-radius:8px; background:var(--gold-deep); color:#fff; text-decoration:none;}
+  .nav-cta:hover{background:#7a481e;}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  .article-head{max-width:720px; margin:3rem auto 0; padding:0 1.5rem; text-align:center;}
+  .back-link{font-family:var(--mono); font-size:12px; color:var(--text-muted); text-decoration:none; display:inline-block; margin-bottom:1.6rem;}
+  .back-link:hover{color:var(--navy);}
+  .art-eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--navy); font-weight:600; margin:0 0 1rem;}
+  .art-title{font-family:var(--serif); font-weight:800; font-size:clamp(30px,5vw,46px); line-height:1.12; color:var(--ink); margin:0 0 1.2rem;}
+  .art-dek{font-family:var(--serif); font-style:italic; font-size:18px; line-height:1.55; color:var(--text-muted); margin:0 0 1.5rem;}
+  .art-byline{font-family:var(--sans); font-size:12.5px; color:var(--text-muted); padding-bottom:2rem; border-bottom:1px solid var(--border);}
+  .art-byline b{color:var(--text);}
+
+  .art-body{max-width:680px; margin:0 auto; padding:2.6rem 1.5rem 1rem; font-family:var(--serif); font-size:18px; line-height:1.75; color:var(--text);}
+  .art-body p{margin:0 0 1.5rem;}
+  .art-body p:first-of-type::first-letter{
+    font-family:var(--serif); font-weight:700; font-size:64px; float:left; line-height:.8; padding:.1rem .5rem 0 0; color:var(--gold-deep);
+  }
+  .art-body h2{font-family:var(--serif); font-weight:700; font-size:26px; color:var(--ink); margin:2.4rem 0 1rem;}
+  .art-body h3{font-family:var(--sans); font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:.03em; color:var(--navy); margin:1.8rem 0 .8rem;}
+  .art-body ul, .art-body ol{margin:0 0 1.5rem; padding-left:1.4rem;}
+  .art-body li{margin-bottom:.5rem;}
+  .pull-quote{
+    font-family:var(--serif); font-style:italic; font-weight:600; font-size:24px; line-height:1.4; color:var(--ink);
+    border-left:4px solid var(--gold); padding:.2rem 0 .2rem 1.6rem; margin:2.2rem 0;
+  }
+  .info-box{
+    background:var(--white); border:1px solid var(--border); border-left:4px solid var(--navy); border-radius:8px;
+    padding:1.3rem 1.5rem; margin:2rem 0; font-family:var(--sans); font-size:14.5px; line-height:1.65;
+  }
+  .info-box strong{color:var(--navy-deep);}
+  .takeaways{background:var(--ink); border-radius:14px; padding:2rem 2.2rem; margin:2.6rem 0; color:#fff;}
+  .takeaways h3{font-family:var(--sans); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#8FC9DD; margin:0 0 1rem;}
+  .takeaways ul{margin:0; padding-left:1.2rem; font-family:var(--sans); font-size:14.5px; line-height:1.7; color:#DCE4E6;}
+  .takeaways li{margin-bottom:.5rem;}
+
+  .cta-strip{max-width:680px; margin:3rem auto 4rem; padding:0 1.5rem;}
+  .cta-inner{background:var(--white); border:1px solid var(--border); border-radius:14px; padding:1.8rem 2rem; text-align:center;}
+  .cta-inner p{font-family:var(--sans); font-size:14px; color:var(--text-muted); margin:0 0 1rem;}
+  .cta-inner a{display:inline-block; background:var(--gold); color:#fff; font-family:var(--sans); font-weight:600; font-size:14px; padding:.75rem 1.5rem; border-radius:8px; text-decoration:none;}
+  .cta-inner a:hover{background:var(--gold-deep);}
+
+  footer{border-top:1px solid var(--border); padding:2.2rem 0; text-align:center; font-size:12px; color:var(--text-muted);}
+</style>
+<script src="analytics.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.75 2C6.75 1.31 7.31 0.75 8 0.75H13.5L18 5.25V21.25C18 21.94 17.44 22.5 16.75 22.5H8C7.31 22.5 6.75 21.94 6.75 21.25V2Z" fill="#0E7FA6"/><path d="M13.5 0.75V4.25C13.5 4.66 13.84 5 14.25 5H18L13.5 0.75Z" fill="#B4652E"/><path d="M9.25 13.25L11.25 15.25L15 10.75" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>IT Documentgenerator</a>
+    <div class="nav-links">
+      <a href="index.html#documenten">Documenten</a>
+      <a href="kennisbank.html" class="current">Kennisbank</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="over-mij.html">Over mij</a>
+    </div>
+    <a href="sla-generator.html" class="nav-cta">Start je document</a>
+  </div>
+</nav>
+
+<div class="article-head">
+  <a href="kennisbank.html" class="back-link">← Terug naar de kennisbank</a>
+  <p class="art-eyebrow">Contract- &amp; Leveranciersmanagement</p>
+  <h1 class="art-title">De vendor scorecard: leveranciers beoordelen zonder giswerk</h1>
+  <p class="art-dek">"Die leverancier bevalt me wel" is geen basis voor een contractverlenging van twee jaar. Waarom gestructureerde beoordeling beter werkt dan onderbuikgevoel.</p>
+  <p class="art-byline">Door <b>de redactie</b> · 5 minuten leestijd</p>
+</div>
+
+<article class="art-body">
+  <p>Bij de meeste kleine en middelgrote organisaties gebeurt leveranciersbeoordeling informeel: iemand heeft een vaag positief of negatief gevoel bij een leverancier, en dat gevoel bepaalt of het contract wordt verlengd. Dat werkt, tot het moment dat het gevoel wordt beïnvloed door recente gebeurtenissen — een goed telefoongesprek vlak voor de verlenging, of juist een vervelende storing die de langere, overwegend positieve geschiedenis overschaduwt.</p>
+
+  <p>Een vendor scorecard lost dit op door de beoordeling te structureren rond concrete criteria, in plaats van rond een algemeen gevoel. Het idee is niet nieuw of ingewikkeld — het effect ervan wordt wel vaak onderschat.</p>
+
+  <h2>Vijf criteria die samen een vollediger beeld geven</h2>
+  <p>Een goede scorecard beoordeelt een leverancier niet op één dimensie, maar op meerdere, onafhankelijke criteria: de kwaliteit van het geleverde werk, de betrouwbaarheid van levertijden, de prijs-kwaliteitverhouding, de kwaliteit van de communicatie, en de mate van innovatie of proactiviteit. Een leverancier kan uitstekend scoren op kwaliteit en tegelijk zwak op communicatie — dat soort nuance gaat verloren in een algeheel gevoel, maar is precies wat je nodig hebt om een gerichte, constructieve verbeterdialoog te voeren.</p>
+
+  <blockquote class="pull-quote">Een score van 3,2 op vijf criteria vertelt meer dan "die leverancier is oké".</blockquote>
+
+  <h2>Waarom losse incidenten het beeld vertekenen</h2>
+  <p>Mensen zijn recency-gevoelig: een storing van vorige week weegt zwaarder mee in het geheugen dan zes maanden probleemloze dienstverlening daarvoor. Een gestructureerde, periodieke beoordeling — bijvoorbeeld elk kwartaal — corrigeert voor dit effect, omdat de score consequent over een vaste periode wordt opgebouwd, in plaats van gedomineerd te worden door het meest recente incident.</p>
+
+  <div class="info-box">
+    <strong>Praktisch effect:</strong> een leverancier die structureel goed presteert, maar één zichtbare misser had, wordt bij een informele beoordeling vaak onterecht zwaar afgestraft. Een scorecard met meerdere criteria zet die ene misser in verhouding tot de rest van de prestatie.
+  </div>
+
+  <h2>Het gesprek dat een scorecard mogelijk maakt</h2>
+  <p>Het grootste voordeel van een scorecard is misschien niet de score zelf, maar het gesprek dat hij mogelijk maakt. In plaats van een vaag "we zijn niet helemaal tevreden", kun je een leverancier concreet aangeven: "jullie scoren sterk op kwaliteit en prijs, maar communicatie blijft achter — wat kunnen we daaraan doen?" Dat is een gesprek waar een leverancier iets mee kan, in tegenstelling tot een algemene onvrede zonder duidelijke richting.</p>
+
+  <h3>Wanneer een scorecard het meeste oplevert</h3>
+  <ul>
+    <li>Bij leveranciers met een contractwaarde die opweegt tegen de tijdsinvestering van periodieke beoordeling</li>
+    <li>Vlak vóór een contractverlenging of heronderhandeling, als objectieve onderbouwing</li>
+    <li>Bij twijfel of een leverancier moet worden vervangen — de score maakt het besluit navolgbaar, ook naar collega's</li>
+    <li>Als vergelijkingsbasis tussen meerdere leveranciers die vergelijkbare diensten leveren</li>
+  </ul>
+
+  <div class="takeaways">
+    <h3>In het kort</h3>
+    <ul>
+      <li>Een algeheel gevoel over een leverancier wordt te makkelijk vertekend door recente gebeurtenissen</li>
+      <li>Meerdere onafhankelijke criteria geven een genuanceerder, bruikbaarder beeld dan één algemene indruk</li>
+      <li>Een scorecard maakt evaluatiegesprekken met leveranciers concreet in plaats van vaag</li>
+      <li>Periodieke herhaling (bijvoorbeeld per kwartaal) corrigeert voor het effect van losse incidenten</li>
+    </ul>
+  </div>
+
+  <p>Een vendor scorecard vraagt weinig tijd om in te vullen, maar levert iets op dat een onderbuikgevoel nooit kan: een navolgbaar, herhaalbaar en eerlijk beeld van hoe een leverancier het daadwerkelijk doet — vandaag, en over tijd.</p>
+</article>
+
+<div class="cta-strip">
+  <div class="cta-inner">
+    <p>De generator berekent automatisch een gemiddelde score en classificatie op basis van vijf criteria — inclusief een visueel wielendiagram.</p>
+    <a href="sla-generator.html">Start een leveranciersbeoordeling →</a>
+  </div>
+</div>
+
+<footer>
+  Javabird79 · KVK 90050150 · BTW NL004789855B21 — Dit artikel is algemene achtergrondinformatie.
+</footer>
+<script>
+  // Meet of bezoekers vanuit dit artikel doorklikken naar de generator.
+  document.querySelectorAll('.cta-inner a').forEach(function(link){
+    link.addEventListener('click', function(){
+      if(window.trackEvent) window.trackEvent('Artikel naar generator', {artikel: document.title});
+    });
+  });
+</script>
+
+<!-- ═══ Analytics & cookietoestemming ═══════════════════════════════════
+     Twee systemen tegelijk, met verschillende juridische status:
+
+     1) PLAUSIBLE (privacy-vriendelijk): laadt altijd, geen cookies, geen
+        persoonsgegevens, geen toestemming vereist onder de AVG. Vervang
+        "vervang-dit-domein.nl" hieronder door je eigen domeinnaam zoals
+        geregistreerd bij Plausible — dit vraagt een (betaald) account op
+        https://plausible.io.
+
+     2) GOOGLE ANALYTICS (GA4): plaatst wél een cookie, en laadt daarom pas
+        NA expliciete toestemming via de banner hieronder. Vervang
+        "G-XXXXXXXXXX" door je eigen GA4 Measurement ID — aan te maken via
+        een gratis Google Analytics-account op https://analytics.google.com.
+
+     Beide zijn placeholders: zonder je eigen account-ID's meet dit nog
+     niets. Dit stukje moet, ongewijzigd, op elke pagina van de site staan.
+     ════════════════════════════════════════════════════════════════════ -->
+<script defer data-domain="vervang-dit-domein.nl" src="https://plausible.io/js/script.js"></script>
+
+<div id="cookieConsent" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1B2226; color:#fff; padding:1.1rem 1.5rem; font-family:'Inter',sans-serif; font-size:13.5px; box-shadow:0 -4px 20px rgba(0,0,0,.25);">
+  <div style="max-width:920px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
+    <p style="margin:0; line-height:1.55; flex:1; min-width:240px; color:#DCE4E6;">We gebruiken Google Analytics om te zien welke documenten en artikelen het meest gebruikt worden. Dit plaatst een cookie. Ga je akkoord?</p>
+    <div style="display:flex; gap:.6rem; flex-shrink:0;">
+      <button id="cookieDecline" style="padding:.55rem 1.1rem; border-radius:6px; border:1px solid #5C7278; background:transparent; color:#fff; cursor:pointer; font-size:13px; font-family:inherit;">Weigeren</button>
+      <button id="cookieAccept" style="padding:.55rem 1.1rem; border-radius:6px; border:none; background:#C17A3D; color:#fff; cursor:pointer; font-weight:600; font-size:13px; font-family:inherit;">Accepteren</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ← vervang door je eigen GA4 Measurement ID
+  function loadGA(){
+    if(window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+  }
+  function init(){
+    var consent = localStorage.getItem('cookieConsent');
+    if(consent === 'accepted'){ loadGA(); return; }
+    if(consent === 'declined'){ return; }
+    var banner = document.getElementById('cookieConsent');
+    if(!banner) return;
+    banner.style.display = 'block';
+    document.getElementById('cookieAccept').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'accepted');
+      banner.style.display = 'none';
+      loadGA();
+    });
+    document.getElementById('cookieDecline').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'declined');
+      banner.style.display = 'none';
+    });
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', init); }
+  else { init(); }
+
+  // Gedeelde helper om events te loggen bij beide systemen tegelijk —
+  // werkt overal waar dit script staat, ongeacht of GA al is geladen.
+  window.trackEvent = function(name, props){
+    if(window.plausible) window.plausible(name, {props: props || {}});
+    if(window.gtag) window.gtag('event', name, props || {});
+  };
+})();
+</script>
+<!-- ═══ Einde analytics & cookietoestemming ═══════════════════════════ -->
+
+
+</body>
+</html>

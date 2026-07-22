@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kennisbank — IT Documentgenerator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0E7FA6;
+    --navy-deep: #0A4E66;
+    --steel: #4FA8C2;
+    --gold: #C17A3D;
+    --gold-deep: #955B26;
+    --ink: #1B2226;
+    --bg: #F7F5F0;
+    --paper: #FDFCF9;
+    --white: #FFFFFF;
+    --text: #142B30;
+    --text-muted: #5C7278;
+    --border: #DCE4E6;
+    --rule: #17242A;
+    --serif: 'Source Serif 4', serif;
+    --sans: 'Inter', sans-serif;
+    --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+  a{color:inherit;}
+  .container{max-width:1160px; margin:0 auto; padding:0 1.5rem;}
+
+  /* ── shared site nav ── */
+  nav{position:sticky; top:0; z-index:200; background:rgba(247,245,240,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1160px; margin:0 auto;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--navy); display:flex; align-items:center; gap:8px; text-decoration:none;}
+  .logo-mark{width:24px; height:24px; flex-shrink:0;}
+  .nav-links{display:flex; gap:1.8rem; font-size:13.5px;}
+  .nav-links a{color:var(--text-muted); text-decoration:none; transition:color .15s;}
+  .nav-links a:hover, .nav-links a.current{color:var(--navy);}
+  .nav-links a.current{font-weight:600;}
+  .nav-cta{font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.55rem 1.1rem; border-radius:8px; background:var(--gold-deep); color:#fff; text-decoration:none; transition:background .15s, transform .15s;}
+  .nav-cta:hover{background:#7a481e; transform:translateY(-1px);}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  /* ── masthead ── */
+  .masthead{padding:3.2rem 0 1.6rem; text-align:center; border-bottom:4px double var(--rule);}
+  .masthead-kicker{font-family:var(--mono); font-size:11.5px; letter-spacing:.16em; text-transform:uppercase; color:var(--gold-deep); margin:0 0 .9rem;}
+  .masthead-name{
+    font-family:var(--serif); font-weight:900; font-size:clamp(40px,7vw,68px); letter-spacing:-.01em;
+    color:var(--ink); margin:0; line-height:1;
+  }
+  .masthead-tag{font-family:var(--serif); font-style:italic; font-size:16px; color:var(--text-muted); margin:.9rem 0 0;}
+  .masthead-meta{
+    display:flex; align-items:center; justify-content:center; gap:1.4rem; margin-top:1.3rem;
+    font-family:var(--mono); font-size:11.5px; color:var(--text-muted); text-transform:uppercase; letter-spacing:.04em;
+  }
+  .masthead-meta span{display:flex; align-items:center; gap:.4rem;}
+  .masthead-meta .sep{width:4px; height:4px; border-radius:50%; background:var(--border);}
+
+  /* ── featured lead article ── */
+  .lead{padding:2.6rem 0 2.8rem; border-bottom:1px solid var(--border);}
+  .lead-grid{display:grid; grid-template-columns:1fr 1px 1fr; gap:2.6rem; align-items:start;}
+  .lead-rule{background:var(--border); height:100%;}
+  .lead-eyebrow{font-family:var(--mono); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:var(--navy); margin:0 0 .7rem; font-weight:600;}
+  .lead-title{font-family:var(--serif); font-weight:700; font-size:clamp(26px,3.4vw,38px); line-height:1.12; color:var(--ink); margin:0 0 1rem;}
+  .lead-title a{text-decoration:none; color:inherit;}
+  .lead-dek{font-family:var(--serif); font-size:17px; line-height:1.6; color:var(--text-muted); margin:0 0 1.1rem;}
+  .lead-byline{font-family:var(--sans); font-size:12.5px; color:var(--text-muted);}
+  .lead-byline b{color:var(--text); font-weight:600;}
+  .lead-side{display:flex; flex-direction:column; gap:1.5rem;}
+  .side-item{padding-bottom:1.3rem; border-bottom:1px solid var(--border);}
+  .side-item:last-child{border-bottom:none; padding-bottom:0;}
+  .side-kicker{font-family:var(--mono); font-size:10px; letter-spacing:.08em; text-transform:uppercase; color:var(--gold-deep); margin:0 0 .4rem; font-weight:600;}
+  .side-title{font-family:var(--serif); font-weight:600; font-size:16.5px; line-height:1.3; margin:0 0 .4rem;}
+  .side-title a{text-decoration:none; color:var(--ink);}
+  .side-title a:hover{color:var(--navy);}
+  .side-meta{font-family:var(--sans); font-size:11.5px; color:var(--text-muted);}
+
+  /* ── section divider ── */
+  .section-rule{padding:2.4rem 0 1.6rem;}
+  .section-rule h2{
+    font-family:var(--serif); font-weight:700; font-size:22px; color:var(--ink); margin:0;
+    display:inline-block; padding-bottom:.5rem; border-bottom:3px solid var(--gold);
+  }
+
+  /* ── article grid ── */
+  .article-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:2.2rem; padding-bottom:2rem;}
+  @media (max-width:900px){ .article-grid{grid-template-columns:1fr 1fr;} }
+  @media (max-width:620px){ .article-grid{grid-template-columns:1fr;} }
+  .article-card{display:flex; flex-direction:column; text-decoration:none; color:inherit; padding-top:1rem; border-top:2px solid var(--ink);}
+  .card-cat{font-family:var(--mono); font-size:10px; letter-spacing:.09em; text-transform:uppercase; color:var(--navy); font-weight:600; margin-bottom:.6rem;}
+  .card-title{font-family:var(--serif); font-weight:700; font-size:19px; line-height:1.28; color:var(--ink); margin:0 0 .6rem; transition:color .15s;}
+  .article-card:hover .card-title{color:var(--gold-deep);}
+  .card-dek{font-size:13.5px; color:var(--text-muted); line-height:1.55; margin:0 0 .8rem; flex-grow:1;}
+  .card-meta{font-family:var(--sans); font-size:11.5px; color:var(--text-muted); display:flex; gap:.6rem; align-items:center;}
+  .card-meta .sep{width:3px; height:3px; border-radius:50%; background:var(--border);}
+
+  /* ── newsletter/CTA strip ── */
+  .cta-strip{
+    background:var(--ink); border-radius:16px; padding:2.6rem 2.4rem; margin:3rem 0; text-align:center;
+    background-image:radial-gradient(circle at 20% 20%, rgba(14,127,166,.35), transparent 55%), radial-gradient(circle at 85% 75%, rgba(193,122,61,.28), transparent 50%);
+  }
+  .cta-strip h3{font-family:var(--serif); font-weight:700; font-size:24px; color:#fff; margin:0 0 .6rem;}
+  .cta-strip p{color:#B9C4C7; font-size:14.5px; max-width:520px; margin:0 auto 1.4rem;}
+  .cta-strip a{
+    display:inline-block; background:var(--gold); color:#fff; font-family:var(--sans); font-weight:600; font-size:14px;
+    padding:.75rem 1.5rem; border-radius:8px; text-decoration:none; transition:background .15s, transform .15s;
+  }
+  .cta-strip a:hover{background:var(--gold-deep); transform:translateY(-1px);}
+
+  footer{border-top:1px solid var(--border); padding:2.2rem 0; text-align:center; font-size:12px; color:var(--text-muted);}
+</style>
+<script src="analytics.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.75 2C6.75 1.31 7.31 0.75 8 0.75H13.5L18 5.25V21.25C18 21.94 17.44 22.5 16.75 22.5H8C7.31 22.5 6.75 21.94 6.75 21.25V2Z" fill="#0E7FA6"/><path d="M13.5 0.75V4.25C13.5 4.66 13.84 5 14.25 5H18L13.5 0.75Z" fill="#B4652E"/><path d="M9.25 13.25L11.25 15.25L15 10.75" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>IT Documentgenerator</a>
+    <div class="nav-links">
+      <a href="index.html#documenten">Documenten</a>
+      <a href="kennisbank.html" class="current">Kennisbank</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="over-mij.html">Over mij</a>
+    </div>
+    <a href="sla-generator.html" class="nav-cta">Start je document</a>
+  </div>
+</nav>
+
+<header class="masthead">
+  <p class="masthead-kicker">IT Documentgenerator presenteert</p>
+  <h1 class="masthead-name">De Kennisbank</h1>
+  <p class="masthead-tag">Praktijkkennis over contracten, IT-servicemanagement, HR en zelfinzicht — helder uitgelegd, zonder jargon.</p>
+  <div class="masthead-meta">
+    <span>21 categorieën</span>
+    <span class="sep"></span>
+    <span>Bijgewerkt juli 2026</span>
+    <span class="sep"></span>
+    <span>Gratis te lezen</span>
+  </div>
+</header>
+
+<div class="container">
+
+  <section class="lead">
+    <div class="lead-grid">
+      <div>
+        <p class="lead-eyebrow">Uitgelicht — Contracten &amp; SLA's</p>
+        <h2 class="lead-title"><a href="artikel-sla-uitgelegd.html">Wat moet er eigenlijk in een SLA staan? Een praktische gids voor wie er nooit één heeft geschreven</a></h2>
+        <p class="lead-dek">Een service level agreement is meer dan een lijstje beloftes — het is het document waarnaar beide partijen teruggrijpen zodra het misgaat. Deze gids loopt de onderdelen langs die er echt toe doen, en de valkuilen die de meeste zelfgeschreven SLA's tandeloos maken.</p>
+        <p class="lead-byline">Door <b>de redactie</b> — 7 minuten leestijd</p>
+      </div>
+      <div class="lead-rule"></div>
+      <div class="lead-side">
+        <div class="side-item">
+          <p class="side-kicker">ITIL &amp; IT-servicemanagement</p>
+          <h3 class="side-title"><a href="artikel-incident-vs-problem.html">Incident of probleem? Het verschil dat de meeste teams door elkaar halen</a></h3>
+          <p class="side-meta">5 minuten leestijd</p>
+        </div>
+        <div class="side-item">
+          <p class="side-kicker">Audits &amp; kwaliteit</p>
+          <h3 class="side-title"><a href="artikel-iso27001-uitgelegd.html">ISO 27001 in gewone taal: wat de norm écht van je vraagt</a></h3>
+          <p class="side-meta">6 minuten leestijd</p>
+        </div>
+        <div class="side-item">
+          <p class="side-kicker">Persoonlijkheid &amp; zelfinzicht</p>
+          <h3 class="side-title"><a href="artikel-human-design.html">Human Design: zelfreflectie-instrument of pseudowetenschap?</a></h3>
+          <p class="side-meta">6 minuten leestijd</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="section-rule"><h2>Alle artikelen</h2></section>
+  <section class="article-grid">
+
+    <a class="article-card" href="artikel-sla-uitgelegd.html">
+      <p class="card-cat">Contracten &amp; SLA's</p>
+      <h3 class="card-title">Wat moet er eigenlijk in een SLA staan?</h3>
+      <p class="card-dek">De onderdelen die een service level agreement daadwerkelijk afdwingbaar maken, en de vage formuleringen die 'm juist tandeloos maken.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>7 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-iso27001-uitgelegd.html">
+      <p class="card-cat">Audits &amp; kwaliteit</p>
+      <h3 class="card-title">ISO 27001 in gewone taal</h3>
+      <p class="card-dek">Geen norm-jargon, maar een heldere uitleg van wat informatiebeveiligingsbeleid in de praktijk van een klein IT-bedrijf betekent.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>6 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-incident-vs-problem.html">
+      <p class="card-cat">ITIL &amp; IT-servicemanagement</p>
+      <h3 class="card-title">Incident of probleem?</h3>
+      <p class="card-dek">Waarom het verschil tussen "het is weer stuk" en "waarom blijft dit stuk gaan" bepalend is voor hoe snel je écht van storingen af komt.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-human-design.html">
+      <p class="card-cat">Persoonlijkheid &amp; zelfinzicht</p>
+      <h3 class="card-title">Human Design: instrument of illusie?</h3>
+      <p class="card-dek">Een eerlijke blik op een populair zelfreflectiesysteem: wat de wetenschap ervan zegt, en waarom het toch waardevol kan zijn.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>6 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-coaching-zes-sessies.html">
+      <p class="card-cat">HRM &amp; persoonlijke ontwikkeling</p>
+      <h3 class="card-title">De zes gesprekken die een coachingstraject dragen</h3>
+      <p class="card-dek">Van kennismaking tot borging: waarom deze specifieke opbouw van zes sessies werkt, en wat er misgaat als je stappen overslaat.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-wet-dba.html">
+      <p class="card-cat">HRM &amp; persoonlijke ontwikkeling</p>
+      <h3 class="card-title">Schijnzelfstandigheid: het risico dat de meeste zzp'ers negeren</h3>
+      <p class="card-dek">De Wet DBA raakt niet alleen de Belastingdienst en de opdrachtgever — als opdrachtnemer loop je zelf ook risico. Wat let precies telt.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-dpia.html">
+      <p class="card-cat">Privacy &amp; compliance</p>
+      <h3 class="card-title">DPIA: wanneer moet je die eigenlijk uitvoeren?</h3>
+      <p class="card-dek">Geen verplichting die alleen grote organisaties raakt — ook kleine IT-dienstverleners lopen er vaker tegenaan dan gedacht.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-cmdb-onderhoud.html">
+      <p class="card-cat">ITIL &amp; IT-servicemanagement</p>
+      <h3 class="card-title">Waarom een CMDB meestal binnen een jaar verwaarloosd wordt</h3>
+      <p class="card-dek">De eerste vulling is zelden het probleem. Wat het onderhoud structureel laat mislukken, en wat wél werkt.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-vendor-scorecard.html">
+      <p class="card-cat">Contract- &amp; Leveranciersmanagement</p>
+      <h3 class="card-title">De vendor scorecard: leveranciers beoordelen zonder giswerk</h3>
+      <p class="card-dek">Waarom een onderbuikgevoel over een leverancier vaak wordt vertekend door recente gebeurtenissen — en gestructureerde beoordeling niet.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-klachtenmanagement.html">
+      <p class="card-cat">Klachtenmanagement</p>
+      <h3 class="card-title">Een klacht is gratis feedback</h3>
+      <p class="card-dek">Waarom klachtenmanagement meer is dan brandjes blussen, en wat de meeste organisaties structureel laten liggen.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-burnout-signalen.html">
+      <p class="card-cat">Welzijn &amp; werkdruk</p>
+      <h3 class="card-title">Burn-out herkennen voordat het te laat is</h3>
+      <p class="card-dek">De signalen die vaak worden genegeerd — niet omdat ze onzichtbaar zijn, maar omdat we ze makkelijk wegverklaren.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-first-call-resolution.html">
+      <p class="card-cat">ITIL &amp; IT-servicemanagement</p>
+      <h3 class="card-title">First call resolution: de KPI die het meeste zegt</h3>
+      <p class="card-dek">Waarom deze ene servicedesk-statistiek meestal meer oplevert dan tien andere samen — mits je 'm correct meet.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-offboarding.html">
+      <p class="card-cat">HR-documenten</p>
+      <h3 class="card-title">Offboarding: het proces dat de meeste bedrijven onderschatten</h3>
+      <p class="card-dek">Onboarding krijgt de aandacht. Offboarding gebeurt op de valreep — terwijl het risico minstens zo groot is.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-requirements.html">
+      <p class="card-cat">Business Analyse</p>
+      <h3 class="card-title">Requirements die niemand begrijpt</h3>
+      <p class="card-dek">"Het systeem moet gebruiksvriendelijk zijn" is geen requirement — het is een wens. Het verschil dat projecten redt.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-applicatielandschap.html">
+      <p class="card-cat">Informatiemanagement</p>
+      <h3 class="card-title">Een applicatielandschap zonder overzicht</h3>
+      <p class="card-dek">De stille kostenpost van IT: niemand die precies weet welke applicaties er nog draaien, en waarom.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-account-health.html">
+      <p class="card-cat">Relatiemanagement</p>
+      <h3 class="card-title">De account health check</h3>
+      <p class="card-dek">Klanten vertrekken zelden zonder waarschuwing. Waarom die signalen vaak niet systematisch worden gevolgd.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-vooropname.html">
+      <p class="card-cat">Werkplekbeheer</p>
+      <h3 class="card-title">De vooropname die niemand overslaat (totdat het misgaat)</h3>
+      <p class="card-dek">Een grondige site survey voelt als vertraging. In de praktijk voorkomt het precies die vertraging op de installatiedag.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+    <a class="article-card" href="artikel-kennisbank-gebruik.html">
+      <p class="card-cat">Knowledge Management</p>
+      <h3 class="card-title">Waarom niemand de kennisbank gebruikt</h3>
+      <p class="card-dek">Bijna elke organisatie heeft er één. Bijna niemand raadpleegt 'm structureel. De drie oorzaken achter die kloof.</p>
+      <p class="card-meta"><span>De redactie</span><span class="sep"></span><span>5 min</span></p>
+    </a>
+
+  </section>
+
+  <div class="cta-strip">
+    <h3>Liever meteen aan de slag?</h3>
+    <p>143 documenten en tests staan klaar om in enkele minuten in te vullen — van SLA tot Human Design-rapport.</p>
+    <a href="sla-generator.html">Start je document →</a>
+  </div>
+
+</div>
+
+<footer>
+  Javabird79 · KVK 90050150 · BTW NL004789855B21 — Kennisbank-artikelen zijn algemene achtergrondinformatie, geen professioneel advies.
+</footer>
+
+<script>
+  // Meet welke artikelen het meest worden aangeklikt, en of bezoekers
+  // vanuit de kennisbank doorklikken naar de generator (conversie).
+  document.querySelectorAll('.article-card').forEach(function(card){
+    card.addEventListener('click', function(){
+      var title = card.querySelector('.card-title, .side-title, .lead-title')?.textContent.trim() || card.getAttribute('href');
+      if(window.trackEvent) window.trackEvent('Artikel geklikt', {artikel: title});
+    });
+  });
+  document.querySelectorAll('.cta-strip a, .lead a').forEach(function(link){
+    link.addEventListener('click', function(){
+      if(window.trackEvent) window.trackEvent('Kennisbank naar generator', {van: link.closest('article, .lead, .cta-strip') ? window.location.pathname : 'onbekend'});
+    });
+  });
+</script>
+
+<!-- ═══ Analytics & cookietoestemming ═══════════════════════════════════
+     Twee systemen tegelijk, met verschillende juridische status:
+
+     1) PLAUSIBLE (privacy-vriendelijk): laadt altijd, geen cookies, geen
+        persoonsgegevens, geen toestemming vereist onder de AVG. Vervang
+        "vervang-dit-domein.nl" hieronder door je eigen domeinnaam zoals
+        geregistreerd bij Plausible — dit vraagt een (betaald) account op
+        https://plausible.io.
+
+     2) GOOGLE ANALYTICS (GA4): plaatst wél een cookie, en laadt daarom pas
+        NA expliciete toestemming via de banner hieronder. Vervang
+        "G-XXXXXXXXXX" door je eigen GA4 Measurement ID — aan te maken via
+        een gratis Google Analytics-account op https://analytics.google.com.
+
+     Beide zijn placeholders: zonder je eigen account-ID's meet dit nog
+     niets. Dit stukje moet, ongewijzigd, op elke pagina van de site staan.
+     ════════════════════════════════════════════════════════════════════ -->
+<script defer data-domain="vervang-dit-domein.nl" src="https://plausible.io/js/script.js"></script>
+
+<div id="cookieConsent" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1B2226; color:#fff; padding:1.1rem 1.5rem; font-family:'Inter',sans-serif; font-size:13.5px; box-shadow:0 -4px 20px rgba(0,0,0,.25);">
+  <div style="max-width:920px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
+    <p style="margin:0; line-height:1.55; flex:1; min-width:240px; color:#DCE4E6;">We gebruiken Google Analytics om te zien welke documenten en artikelen het meest gebruikt worden. Dit plaatst een cookie. Ga je akkoord?</p>
+    <div style="display:flex; gap:.6rem; flex-shrink:0;">
+      <button id="cookieDecline" style="padding:.55rem 1.1rem; border-radius:6px; border:1px solid #5C7278; background:transparent; color:#fff; cursor:pointer; font-size:13px; font-family:inherit;">Weigeren</button>
+      <button id="cookieAccept" style="padding:.55rem 1.1rem; border-radius:6px; border:none; background:#C17A3D; color:#fff; cursor:pointer; font-weight:600; font-size:13px; font-family:inherit;">Accepteren</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ← vervang door je eigen GA4 Measurement ID
+  function loadGA(){
+    if(window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+  }
+  function init(){
+    var consent = localStorage.getItem('cookieConsent');
+    if(consent === 'accepted'){ loadGA(); return; }
+    if(consent === 'declined'){ return; }
+    var banner = document.getElementById('cookieConsent');
+    if(!banner) return;
+    banner.style.display = 'block';
+    document.getElementById('cookieAccept').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'accepted');
+      banner.style.display = 'none';
+      loadGA();
+    });
+    document.getElementById('cookieDecline').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'declined');
+      banner.style.display = 'none';
+    });
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', init); }
+  else { init(); }
+
+  // Gedeelde helper om events te loggen bij beide systemen tegelijk —
+  // werkt overal waar dit script staat, ongeacht of GA al is geladen.
+  window.trackEvent = function(name, props){
+    if(window.plausible) window.plausible(name, {props: props || {}});
+    if(window.gtag) window.gtag('event', name, props || {});
+  };
+})();
+</script>
+<!-- ═══ Einde analytics & cookietoestemming ═══════════════════════════ -->
+
+
+</body>
+</html>

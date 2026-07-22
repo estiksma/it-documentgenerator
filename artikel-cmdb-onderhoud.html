@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Waarom een CMDB meestal binnen een jaar verwaarloosd wordt — Kennisbank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E7FA6; --navy-deep:#0A4E66; --gold:#C17A3D; --gold-deep:#955B26; --ink:#1B2226;
+    --bg:#F7F5F0; --white:#FFFFFF; --text:#142B30; --text-muted:#5C7278; --border:#DCE4E6; --rule:#17242A;
+    --serif:'Source Serif 4', serif; --sans:'Inter', sans-serif; --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+  a{color:inherit;}
+  nav{position:sticky; top:0; z-index:200; background:rgba(247,245,240,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1160px; margin:0 auto;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--navy); display:flex; align-items:center; gap:8px; text-decoration:none;}
+  .logo-mark{width:24px; height:24px; flex-shrink:0;}
+  .nav-links{display:flex; gap:1.8rem; font-size:13.5px;}
+  .nav-links a{color:var(--text-muted); text-decoration:none;}
+  .nav-links a:hover, .nav-links a.current{color:var(--navy);}
+  .nav-links a.current{font-weight:600;}
+  .nav-cta{font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.55rem 1.1rem; border-radius:8px; background:var(--gold-deep); color:#fff; text-decoration:none;}
+  .nav-cta:hover{background:#7a481e;}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  .article-head{max-width:720px; margin:3rem auto 0; padding:0 1.5rem; text-align:center;}
+  .back-link{font-family:var(--mono); font-size:12px; color:var(--text-muted); text-decoration:none; display:inline-block; margin-bottom:1.6rem;}
+  .back-link:hover{color:var(--navy);}
+  .art-eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--navy); font-weight:600; margin:0 0 1rem;}
+  .art-title{font-family:var(--serif); font-weight:800; font-size:clamp(30px,5vw,46px); line-height:1.12; color:var(--ink); margin:0 0 1.2rem;}
+  .art-dek{font-family:var(--serif); font-style:italic; font-size:18px; line-height:1.55; color:var(--text-muted); margin:0 0 1.5rem;}
+  .art-byline{font-family:var(--sans); font-size:12.5px; color:var(--text-muted); padding-bottom:2rem; border-bottom:1px solid var(--border);}
+  .art-byline b{color:var(--text);}
+
+  .art-body{max-width:680px; margin:0 auto; padding:2.6rem 1.5rem 1rem; font-family:var(--serif); font-size:18px; line-height:1.75; color:var(--text);}
+  .art-body p{margin:0 0 1.5rem;}
+  .art-body p:first-of-type::first-letter{
+    font-family:var(--serif); font-weight:700; font-size:64px; float:left; line-height:.8; padding:.1rem .5rem 0 0; color:var(--gold-deep);
+  }
+  .art-body h2{font-family:var(--serif); font-weight:700; font-size:26px; color:var(--ink); margin:2.4rem 0 1rem;}
+  .art-body h3{font-family:var(--sans); font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:.03em; color:var(--navy); margin:1.8rem 0 .8rem;}
+  .art-body ul, .art-body ol{margin:0 0 1.5rem; padding-left:1.4rem;}
+  .art-body li{margin-bottom:.5rem;}
+  .pull-quote{
+    font-family:var(--serif); font-style:italic; font-weight:600; font-size:24px; line-height:1.4; color:var(--ink);
+    border-left:4px solid var(--gold); padding:.2rem 0 .2rem 1.6rem; margin:2.2rem 0;
+  }
+  .info-box{
+    background:var(--white); border:1px solid var(--border); border-left:4px solid var(--navy); border-radius:8px;
+    padding:1.3rem 1.5rem; margin:2rem 0; font-family:var(--sans); font-size:14.5px; line-height:1.65;
+  }
+  .info-box strong{color:var(--navy-deep);}
+  .takeaways{background:var(--ink); border-radius:14px; padding:2rem 2.2rem; margin:2.6rem 0; color:#fff;}
+  .takeaways h3{font-family:var(--sans); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#8FC9DD; margin:0 0 1rem;}
+  .takeaways ul{margin:0; padding-left:1.2rem; font-family:var(--sans); font-size:14.5px; line-height:1.7; color:#DCE4E6;}
+  .takeaways li{margin-bottom:.5rem;}
+
+  .cta-strip{max-width:680px; margin:3rem auto 4rem; padding:0 1.5rem;}
+  .cta-inner{background:var(--white); border:1px solid var(--border); border-radius:14px; padding:1.8rem 2rem; text-align:center;}
+  .cta-inner p{font-family:var(--sans); font-size:14px; color:var(--text-muted); margin:0 0 1rem;}
+  .cta-inner a{display:inline-block; background:var(--gold); color:#fff; font-family:var(--sans); font-weight:600; font-size:14px; padding:.75rem 1.5rem; border-radius:8px; text-decoration:none;}
+  .cta-inner a:hover{background:var(--gold-deep);}
+
+  footer{border-top:1px solid var(--border); padding:2.2rem 0; text-align:center; font-size:12px; color:var(--text-muted);}
+</style>
+<script src="analytics.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.75 2C6.75 1.31 7.31 0.75 8 0.75H13.5L18 5.25V21.25C18 21.94 17.44 22.5 16.75 22.5H8C7.31 22.5 6.75 21.94 6.75 21.25V2Z" fill="#0E7FA6"/><path d="M13.5 0.75V4.25C13.5 4.66 13.84 5 14.25 5H18L13.5 0.75Z" fill="#B4652E"/><path d="M9.25 13.25L11.25 15.25L15 10.75" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>IT Documentgenerator</a>
+    <div class="nav-links">
+      <a href="index.html#documenten">Documenten</a>
+      <a href="kennisbank.html" class="current">Kennisbank</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="over-mij.html">Over mij</a>
+    </div>
+    <a href="sla-generator.html" class="nav-cta">Start je document</a>
+  </div>
+</nav>
+
+<div class="article-head">
+  <a href="kennisbank.html" class="back-link">← Terug naar de kennisbank</a>
+  <p class="art-eyebrow">ITIL &amp; IT-servicemanagement</p>
+  <h1 class="art-title">Waarom een CMDB meestal binnen een jaar verwaarloosd wordt</h1>
+  <p class="art-dek">Configuratiebeheer begint bijna altijd met goede intenties. Wat verklaart dat de meeste CMDB's binnen twaalf maanden alweer achterlopen op de werkelijkheid?</p>
+  <p class="art-byline">Door <b>de redactie</b> · 5 minuten leestijd</p>
+</div>
+
+<article class="art-body">
+  <p>Er is een herkenbaar patroon in configuratiebeheer: een team investeert enthousiast in het opzetten van een Configuration Management Database, vult 'm zorgvuldig met servers, applicaties en hun onderlinge afhankelijkheden — en negen maanden later blijkt de helft van de gegevens niet meer te kloppen. Nieuwe systemen zijn nooit toegevoegd, oude zijn nooit uitgeschreven, en niemand vertrouwt de data nog genoeg om 'm te gebruiken bij een impactanalyse.</p>
+
+  <p>Dit is niet omdat CMDB's een slecht idee zijn. Het is omdat de meeste implementaties één cruciaal element missen: een proces dat de CMDB automatisch of structureel actueel houdt, in plaats van te vertrouwen op goede bedoelingen.</p>
+
+  <h2>Het probleem is zelden de eerste vulling</h2>
+  <p>De initiële inventarisatie — alles in kaart brengen en invoeren — is meestal het makkelijkste deel. Teams zijn hier gemotiveerd voor, plannen er tijd voor in, en het resultaat is meetbaar en zichtbaar. Het probleem ontstaat daarna: bij elke wijziging, elke nieuwe server, elke uitgefaseerde applicatie moet de CMDB opnieuw worden bijgewerkt — en dat gebeurt zelden vanzelf.</p>
+
+  <blockquote class="pull-quote">Een CMDB is geen project met een einddatum. Het is een proces zonder einddatum.</blockquote>
+
+  <h2>Waarom bijwerken zo vaak wordt overgeslagen</h2>
+  <p>De reden is bijna altijd praktisch: onder tijdsdruk wint het daadwerkelijk oplossen van een storing of het uitrollen van een wijziging het van het administratieve werk van het bijwerken van een database. Niemand laat een productieserver langer plat liggen om eerst de CMDB te updaten. Het gevolg is dat CMDB-updates stelselmatig worden uitgesteld — en uitstel wordt al snel vergeten.</p>
+
+  <div class="info-box">
+    <strong>Herkenbaar moment:</strong> een engineer voegt onder tijdsdruk een nieuwe server toe aan productie, met het voornemen om "later deze week" de CMDB bij te werken. Drie weken later is die server allang in gebruik, en staat hij nergens geregistreerd.
+  </div>
+
+  <h2>Wat wél werkt: koppeling aan bestaand proces, niet een los ritueel</h2>
+  <p>De meest duurzame oplossing is het CMDB-onderhoud niet als apart, geïsoleerd taakje te behandelen, maar te koppelen aan processen die toch al verplicht zijn — met name wijzigingsbeheer. Als een wijziging pas als "afgerond" telt zodra ook de CMDB is bijgewerkt, verdwijnt de mogelijkheid om dit stap simpelweg te vergeten.</p>
+
+  <h3>Praktische maatregelen die het verschil maken</h3>
+  <ul>
+    <li>Maak CMDB-registratie een verplicht onderdeel van de definition of done bij elke wijziging</li>
+    <li>Plan periodieke, korte audits (bijvoorbeeld per kwartaal) specifiek om de CMDB te controleren tegen de werkelijkheid</li>
+    <li>Waar mogelijk: gebruik geautomatiseerde discovery-tools die actief systemen scannen, in plaats van volledig te vertrouwen op handmatige invoer</li>
+    <li>Wijs één eigenaar aan die verantwoordelijk is voor de algehele datakwaliteit, niet alleen voor losse invoer</li>
+    <li>Meet en communiceer de datakwaliteit periodiek — zichtbaarheid houdt de discipline scherp</li>
+  </ul>
+
+  <h2>De prijs van een onbetrouwbare CMDB</h2>
+  <p>Een CMDB die niet meer wordt vertrouwd, verliest zijn functie volledig — teams gaan 'm simpelweg negeren en vertrouwen weer op losse kennis in ieders hoofd, precies het probleem dat de CMDB zou moeten oplossen. Dat maakt datakwaliteit geen "nice to have", maar de bepalende factor of het hele initiatief zijn geld waard is geweest.</p>
+
+  <div class="takeaways">
+    <h3>In het kort</h3>
+    <ul>
+      <li>De eerste vulling van een CMDB is zelden het probleem; het structureel actueel houden wel</li>
+      <li>Onder tijdsdruk verliest CMDB-onderhoud het bijna altijd van directe operationele taken</li>
+      <li>Koppel CMDB-updates aan bestaande, verplichte processen zoals wijzigingsbeheer</li>
+      <li>Een CMDB die niet meer wordt vertrouwd, wordt genegeerd — en verliest daarmee zijn waarde volledig</li>
+    </ul>
+  </div>
+
+  <p>Een CMDB is uiteindelijk geen technisch probleem, maar een disciplineprobleem. De organisaties waar het wél lukt, zijn zelden degenen met de meest geavanceerde tooling — het zijn degenen die CMDB-onderhoud onlosmakelijk hebben verbonden aan het werk dat toch al moest gebeuren.</p>
+</article>
+
+<div class="cta-strip">
+  <div class="cta-inner">
+    <p>De generator heeft een complete set voor configuratiebeheer: inrichtingsplan, CI-registratie, classificatieschema en een datakwaliteitscheck met automatische score.</p>
+    <a href="sla-generator.html">Bekijk CMDB &amp; Configuratiebeheer →</a>
+  </div>
+</div>
+
+<footer>
+  Javabird79 · KVK 90050150 · BTW NL004789855B21 — Dit artikel is algemene achtergrondinformatie.
+</footer>
+<script>
+  // Meet of bezoekers vanuit dit artikel doorklikken naar de generator.
+  document.querySelectorAll('.cta-inner a').forEach(function(link){
+    link.addEventListener('click', function(){
+      if(window.trackEvent) window.trackEvent('Artikel naar generator', {artikel: document.title});
+    });
+  });
+</script>
+
+<!-- ═══ Analytics & cookietoestemming ═══════════════════════════════════
+     Twee systemen tegelijk, met verschillende juridische status:
+
+     1) PLAUSIBLE (privacy-vriendelijk): laadt altijd, geen cookies, geen
+        persoonsgegevens, geen toestemming vereist onder de AVG. Vervang
+        "vervang-dit-domein.nl" hieronder door je eigen domeinnaam zoals
+        geregistreerd bij Plausible — dit vraagt een (betaald) account op
+        https://plausible.io.
+
+     2) GOOGLE ANALYTICS (GA4): plaatst wél een cookie, en laadt daarom pas
+        NA expliciete toestemming via de banner hieronder. Vervang
+        "G-XXXXXXXXXX" door je eigen GA4 Measurement ID — aan te maken via
+        een gratis Google Analytics-account op https://analytics.google.com.
+
+     Beide zijn placeholders: zonder je eigen account-ID's meet dit nog
+     niets. Dit stukje moet, ongewijzigd, op elke pagina van de site staan.
+     ════════════════════════════════════════════════════════════════════ -->
+<script defer data-domain="vervang-dit-domein.nl" src="https://plausible.io/js/script.js"></script>
+
+<div id="cookieConsent" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1B2226; color:#fff; padding:1.1rem 1.5rem; font-family:'Inter',sans-serif; font-size:13.5px; box-shadow:0 -4px 20px rgba(0,0,0,.25);">
+  <div style="max-width:920px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
+    <p style="margin:0; line-height:1.55; flex:1; min-width:240px; color:#DCE4E6;">We gebruiken Google Analytics om te zien welke documenten en artikelen het meest gebruikt worden. Dit plaatst een cookie. Ga je akkoord?</p>
+    <div style="display:flex; gap:.6rem; flex-shrink:0;">
+      <button id="cookieDecline" style="padding:.55rem 1.1rem; border-radius:6px; border:1px solid #5C7278; background:transparent; color:#fff; cursor:pointer; font-size:13px; font-family:inherit;">Weigeren</button>
+      <button id="cookieAccept" style="padding:.55rem 1.1rem; border-radius:6px; border:none; background:#C17A3D; color:#fff; cursor:pointer; font-weight:600; font-size:13px; font-family:inherit;">Accepteren</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ← vervang door je eigen GA4 Measurement ID
+  function loadGA(){
+    if(window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+  }
+  function init(){
+    var consent = localStorage.getItem('cookieConsent');
+    if(consent === 'accepted'){ loadGA(); return; }
+    if(consent === 'declined'){ return; }
+    var banner = document.getElementById('cookieConsent');
+    if(!banner) return;
+    banner.style.display = 'block';
+    document.getElementById('cookieAccept').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'accepted');
+      banner.style.display = 'none';
+      loadGA();
+    });
+    document.getElementById('cookieDecline').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'declined');
+      banner.style.display = 'none';
+    });
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', init); }
+  else { init(); }
+
+  // Gedeelde helper om events te loggen bij beide systemen tegelijk —
+  // werkt overal waar dit script staat, ongeacht of GA al is geladen.
+  window.trackEvent = function(name, props){
+    if(window.plausible) window.plausible(name, {props: props || {}});
+    if(window.gtag) window.gtag('event', name, props || {});
+  };
+})();
+</script>
+<!-- ═══ Einde analytics & cookietoestemming ═══════════════════════════ -->
+
+
+</body>
+</html>

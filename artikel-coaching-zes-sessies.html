@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>De zes gesprekken die een coachingstraject dragen — Kennisbank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E7FA6; --navy-deep:#0A4E66; --gold:#C17A3D; --gold-deep:#955B26; --ink:#1B2226;
+    --bg:#F7F5F0; --white:#FFFFFF; --text:#142B30; --text-muted:#5C7278; --border:#DCE4E6; --rule:#17242A;
+    --serif:'Source Serif 4', serif; --sans:'Inter', sans-serif; --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+  a{color:inherit;}
+  nav{position:sticky; top:0; z-index:200; background:rgba(247,245,240,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1160px; margin:0 auto;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--navy); display:flex; align-items:center; gap:8px; text-decoration:none;}
+  .logo-mark{width:24px; height:24px; flex-shrink:0;}
+  .nav-links{display:flex; gap:1.8rem; font-size:13.5px;}
+  .nav-links a{color:var(--text-muted); text-decoration:none;}
+  .nav-links a:hover, .nav-links a.current{color:var(--navy);}
+  .nav-links a.current{font-weight:600;}
+  .nav-cta{font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.55rem 1.1rem; border-radius:8px; background:var(--gold-deep); color:#fff; text-decoration:none;}
+  .nav-cta:hover{background:#7a481e;}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  .article-head{max-width:720px; margin:3rem auto 0; padding:0 1.5rem; text-align:center;}
+  .back-link{font-family:var(--mono); font-size:12px; color:var(--text-muted); text-decoration:none; display:inline-block; margin-bottom:1.6rem;}
+  .back-link:hover{color:var(--navy);}
+  .art-eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--navy); font-weight:600; margin:0 0 1rem;}
+  .art-title{font-family:var(--serif); font-weight:800; font-size:clamp(30px,5vw,46px); line-height:1.12; color:var(--ink); margin:0 0 1.2rem;}
+  .art-dek{font-family:var(--serif); font-style:italic; font-size:18px; line-height:1.55; color:var(--text-muted); margin:0 0 1.5rem;}
+  .art-byline{font-family:var(--sans); font-size:12.5px; color:var(--text-muted); padding-bottom:2rem; border-bottom:1px solid var(--border);}
+  .art-byline b{color:var(--text);}
+
+  .art-body{max-width:680px; margin:0 auto; padding:2.6rem 1.5rem 1rem; font-family:var(--serif); font-size:18px; line-height:1.75; color:var(--text);}
+  .art-body p{margin:0 0 1.5rem;}
+  .art-body p:first-of-type::first-letter{
+    font-family:var(--serif); font-weight:700; font-size:64px; float:left; line-height:.8; padding:.1rem .5rem 0 0; color:var(--gold-deep);
+  }
+  .art-body h2{font-family:var(--serif); font-weight:700; font-size:26px; color:var(--ink); margin:2.4rem 0 1rem;}
+  .art-body h3{font-family:var(--sans); font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:.03em; color:var(--navy); margin:1.8rem 0 .8rem;}
+  .art-body ul, .art-body ol{margin:0 0 1.5rem; padding-left:1.4rem;}
+  .art-body li{margin-bottom:.5rem;}
+  .step-list{list-style:none; margin:0 0 1.5rem; padding:0; counter-reset:step;}
+  .step-list li{counter-increment:step; padding:1rem 0 1rem 3rem; position:relative; border-bottom:1px solid var(--border); font-family:var(--sans); font-size:15px;}
+  .step-list li::before{
+    content:counter(step); position:absolute; left:0; top:1rem; width:26px; height:26px; border-radius:50%;
+    background:var(--gold); color:#fff; font-family:var(--mono); font-size:12px; font-weight:700;
+    display:flex; align-items:center; justify-content:center;
+  }
+  .step-list b{font-family:var(--serif); font-size:17px; display:block; margin-bottom:.2rem; color:var(--ink);}
+  .pull-quote{
+    font-family:var(--serif); font-style:italic; font-weight:600; font-size:24px; line-height:1.4; color:var(--ink);
+    border-left:4px solid var(--gold); padding:.2rem 0 .2rem 1.6rem; margin:2.2rem 0;
+  }
+  .info-box{
+    background:var(--white); border:1px solid var(--border); border-left:4px solid var(--navy); border-radius:8px;
+    padding:1.3rem 1.5rem; margin:2rem 0; font-family:var(--sans); font-size:14.5px; line-height:1.65;
+  }
+  .info-box strong{color:var(--navy-deep);}
+  .takeaways{background:var(--ink); border-radius:14px; padding:2rem 2.2rem; margin:2.6rem 0; color:#fff;}
+  .takeaways h3{font-family:var(--sans); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#8FC9DD; margin:0 0 1rem;}
+  .takeaways ul{margin:0; padding-left:1.2rem; font-family:var(--sans); font-size:14.5px; line-height:1.7; color:#DCE4E6;}
+  .takeaways li{margin-bottom:.5rem;}
+
+  .cta-strip{max-width:680px; margin:3rem auto 4rem; padding:0 1.5rem;}
+  .cta-inner{background:var(--white); border:1px solid var(--border); border-radius:14px; padding:1.8rem 2rem; text-align:center;}
+  .cta-inner p{font-family:var(--sans); font-size:14px; color:var(--text-muted); margin:0 0 1rem;}
+  .cta-inner a{display:inline-block; background:var(--gold); color:#fff; font-family:var(--sans); font-weight:600; font-size:14px; padding:.75rem 1.5rem; border-radius:8px; text-decoration:none;}
+  .cta-inner a:hover{background:var(--gold-deep);}
+
+  footer{border-top:1px solid var(--border); padding:2.2rem 0; text-align:center; font-size:12px; color:var(--text-muted);}
+</style>
+<script src="analytics.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.75 2C6.75 1.31 7.31 0.75 8 0.75H13.5L18 5.25V21.25C18 21.94 17.44 22.5 16.75 22.5H8C7.31 22.5 6.75 21.94 6.75 21.25V2Z" fill="#0E7FA6"/><path d="M13.5 0.75V4.25C13.5 4.66 13.84 5 14.25 5H18L13.5 0.75Z" fill="#B4652E"/><path d="M9.25 13.25L11.25 15.25L15 10.75" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>IT Documentgenerator</a>
+    <div class="nav-links">
+      <a href="index.html#documenten">Documenten</a>
+      <a href="kennisbank.html" class="current">Kennisbank</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="over-mij.html">Over mij</a>
+    </div>
+    <a href="sla-generator.html" class="nav-cta">Start je document</a>
+  </div>
+</nav>
+
+<div class="article-head">
+  <a href="kennisbank.html" class="back-link">← Terug naar de kennisbank</a>
+  <p class="art-eyebrow">HRM &amp; persoonlijke ontwikkeling</p>
+  <h1 class="art-title">De zes gesprekken die een coachingstraject dragen</h1>
+  <p class="art-dek">Van kennismaking tot borging: waarom deze specifieke opbouw werkt, en wat er misgaat als je stappen overslaat.</p>
+  <p class="art-byline">Door <b>de redactie</b> · 5 minuten leestijd</p>
+</div>
+
+<article class="art-body">
+  <p>Coachingstrajecten die vastlopen, lopen zelden vast door een gebrek aan goede vragen. Ze lopen vast doordat de opbouw ontbreekt: sessies die losstaand goed zijn, maar niet logisch op elkaar voortbouwen. Een traject dat begint met actieplannen voordat er helderheid is over het doel, of dat eindigt zonder ooit terug te blikken, laat structureel rendement liggen.</p>
+
+  <p>Een beproefde opbouw bestaat uit zes sessies, elk met een eigen functie. Geen toevallige volgorde, maar een opbouw waarin elke stap de volgende mogelijk maakt.</p>
+
+  <ol class="step-list">
+    <li><b>Kennismaking &amp; doelstelling</b>Zonder een scherp, concreet doel is er niets om naartoe te werken. Deze sessie brengt naar boven wat de coachee werkelijk wil bereiken — vaak een ander antwoord dan de eerste, oppervlakkige formulering.</li>
+    <li><b>Huidige situatie &amp; patronen</b>Voordat je iets kunt veranderen, moet je eerlijk in kaart brengen waar je nu staat — inclusief de patronen die de coachee zelf in stand houdt, vaak zonder dat te beseffen.</li>
+    <li><b>Waarden &amp; drijfveren</b>Doelen die niet aansluiten bij iemands kernwaarden houden zelden stand. Deze sessie legt bloot wat iemand ten diepste drijft, als toetssteen voor de rest van het traject.</li>
+    <li><b>Belemmerende overtuigingen</b>De grootste hindernis is vaak niet extern, maar een overtuiging die niet meer klopt. Deze sessie onderzoekt of die overtuiging houdbaar is — en wat ervoor in de plaats kan komen.</li>
+    <li><b>Actieplan &amp; concrete stappen</b>Inzicht zonder actie verandert niets. Pas nadat de eerste vier sessies helderheid hebben gebracht, is de coachee klaar om concrete, haalbare stappen te zetten.</li>
+    <li><b>Voortgang, borging &amp; afronding</b>Zonder expliciete borging vervalt een groot deel van de winst binnen enkele maanden. Deze laatste sessie maakt hard wat er is geleerd, en hoe dat wordt vastgehouden.</li>
+  </ol>
+
+  <blockquote class="pull-quote">Actie zonder inzicht is willekeur. Inzicht zonder actie is een dagboek.</blockquote>
+
+  <h2>Waarom de volgorde net zo belangrijk is als de inhoud</h2>
+  <p>De verleiding is groot om sneller naar actie te gaan — vooral omdat coachees vaak zelf om concrete stappen vragen. Maar een actieplan gebouwd op een doel dat nog niet scherp is, of op een overtuiging die nog niet is onderzocht, mist fundament. Het resultaat is een lijst met goede voornemens die na twee weken alweer wegzakt.</p>
+
+  <div class="info-box">
+    <strong>Herkenbaar patroon:</strong> een coachee die aan het einde van sessie één al vraagt "en wat moet ik nu concreet doen?" — een teken dat er behoefte is aan actie, maar nog niet aan de juiste actie. De verleiding om die vraag meteen te beantwoorden, is precies het moment om de opbouw te bewaken.
+  </div>
+
+  <h2>De vaak vergeten zesde sessie</h2>
+  <p>Van de zes sessies is de laatste — voortgang, borging en afronding — degene die het vaakst wordt overgeslagen, simpelweg omdat het traject dan "al klaar" voelt. Dat is een gemiste kans: zonder expliciete reflectie op wat er is geleerd, en zonder concrete afspraken over hoe het resultaat wordt vastgehouden, verdampt een groot deel van de opbrengst binnen enkele maanden. De borgingssessie is niet decoratief — het is waar de winst van het hele traject wordt vastgezet.</p>
+
+  <h3>Praktische tips voor wie deze structuur zelf toepast</h3>
+  <ul>
+    <li>Reserveer per sessie 60 tot 90 minuten, en plan niet meer dan één sessie per week</li>
+    <li>Laat de coachee zoveel mogelijk zelf formuleren — de coach begeleidt het proces, levert geen antwoorden</li>
+    <li>Sla geen sessie over, ook niet als een coachee zelf aangeeft "hier geen tijd voor te hebben"</li>
+    <li>Plan de borgingssessie al bij aanvang van het traject in, zodat hij niet per ongeluk wegvalt</li>
+  </ul>
+
+  <div class="takeaways">
+    <h3>In het kort</h3>
+    <ul>
+      <li>Zes sessies met elk een eigen functie werken beter dan losse, ongestructureerde gesprekken</li>
+      <li>Actieplannen die te vroeg komen, missen fundament en houden zelden stand</li>
+      <li>Belemmerende overtuigingen verdienen een eigen sessie, niet een bijzin in een ander gesprek</li>
+      <li>De afsluitende borgingssessie is waar de opbrengst van het hele traject wordt vastgezet</li>
+    </ul>
+  </div>
+
+  <p>Een goed coachingstraject voelt voor de coachee vaak als een natuurlijk gesprek, niet als een strak protocol. Maar achter die schijnbare vanzelfsprekendheid zit een bewuste opbouw — en die opbouw is precies waarom het traject werkt.</p>
+</article>
+
+<div class="cta-strip">
+  <div class="cta-inner">
+    <p>Deze opbouw staat klaar als zes losse sessieformulieren, inclusief een coachhandboek met het GROW-model en ethische richtlijnen.</p>
+    <a href="sla-generator.html">Bekijk het coachingsprogramma →</a>
+  </div>
+</div>
+
+<footer>
+  Javabird79 · KVK 90050150 · BTW NL004789855B21 — Dit artikel is algemene achtergrondinformatie, geen vervanging voor een coachopleiding.
+</footer>
+<script>
+  // Meet of bezoekers vanuit dit artikel doorklikken naar de generator.
+  document.querySelectorAll('.cta-inner a').forEach(function(link){
+    link.addEventListener('click', function(){
+      if(window.trackEvent) window.trackEvent('Artikel naar generator', {artikel: document.title});
+    });
+  });
+</script>
+
+<!-- ═══ Analytics & cookietoestemming ═══════════════════════════════════
+     Twee systemen tegelijk, met verschillende juridische status:
+
+     1) PLAUSIBLE (privacy-vriendelijk): laadt altijd, geen cookies, geen
+        persoonsgegevens, geen toestemming vereist onder de AVG. Vervang
+        "vervang-dit-domein.nl" hieronder door je eigen domeinnaam zoals
+        geregistreerd bij Plausible — dit vraagt een (betaald) account op
+        https://plausible.io.
+
+     2) GOOGLE ANALYTICS (GA4): plaatst wél een cookie, en laadt daarom pas
+        NA expliciete toestemming via de banner hieronder. Vervang
+        "G-XXXXXXXXXX" door je eigen GA4 Measurement ID — aan te maken via
+        een gratis Google Analytics-account op https://analytics.google.com.
+
+     Beide zijn placeholders: zonder je eigen account-ID's meet dit nog
+     niets. Dit stukje moet, ongewijzigd, op elke pagina van de site staan.
+     ════════════════════════════════════════════════════════════════════ -->
+<script defer data-domain="vervang-dit-domein.nl" src="https://plausible.io/js/script.js"></script>
+
+<div id="cookieConsent" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1B2226; color:#fff; padding:1.1rem 1.5rem; font-family:'Inter',sans-serif; font-size:13.5px; box-shadow:0 -4px 20px rgba(0,0,0,.25);">
+  <div style="max-width:920px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
+    <p style="margin:0; line-height:1.55; flex:1; min-width:240px; color:#DCE4E6;">We gebruiken Google Analytics om te zien welke documenten en artikelen het meest gebruikt worden. Dit plaatst een cookie. Ga je akkoord?</p>
+    <div style="display:flex; gap:.6rem; flex-shrink:0;">
+      <button id="cookieDecline" style="padding:.55rem 1.1rem; border-radius:6px; border:1px solid #5C7278; background:transparent; color:#fff; cursor:pointer; font-size:13px; font-family:inherit;">Weigeren</button>
+      <button id="cookieAccept" style="padding:.55rem 1.1rem; border-radius:6px; border:none; background:#C17A3D; color:#fff; cursor:pointer; font-weight:600; font-size:13px; font-family:inherit;">Accepteren</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ← vervang door je eigen GA4 Measurement ID
+  function loadGA(){
+    if(window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+  }
+  function init(){
+    var consent = localStorage.getItem('cookieConsent');
+    if(consent === 'accepted'){ loadGA(); return; }
+    if(consent === 'declined'){ return; }
+    var banner = document.getElementById('cookieConsent');
+    if(!banner) return;
+    banner.style.display = 'block';
+    document.getElementById('cookieAccept').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'accepted');
+      banner.style.display = 'none';
+      loadGA();
+    });
+    document.getElementById('cookieDecline').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'declined');
+      banner.style.display = 'none';
+    });
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', init); }
+  else { init(); }
+
+  // Gedeelde helper om events te loggen bij beide systemen tegelijk —
+  // werkt overal waar dit script staat, ongeacht of GA al is geladen.
+  window.trackEvent = function(name, props){
+    if(window.plausible) window.plausible(name, {props: props || {}});
+    if(window.gtag) window.gtag('event', name, props || {});
+  };
+})();
+</script>
+<!-- ═══ Einde analytics & cookietoestemming ═══════════════════════════ -->
+
+
+</body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Burn-out herkennen voordat het te laat is — Kennisbank</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700;8..60,900&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#0E7FA6; --navy-deep:#0A4E66; --gold:#C17A3D; --gold-deep:#955B26; --ink:#1B2226;
+    --bg:#F7F5F0; --white:#FFFFFF; --text:#142B30; --text-muted:#5C7278; --border:#DCE4E6; --rule:#17242A;
+    --serif:'Source Serif 4', serif; --sans:'Inter', sans-serif; --mono:'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+  a{color:inherit;}
+  nav{position:sticky; top:0; z-index:200; background:rgba(247,245,240,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1160px; margin:0 auto;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--navy); display:flex; align-items:center; gap:8px; text-decoration:none;}
+  .logo-mark{width:24px; height:24px; flex-shrink:0;}
+  .nav-links{display:flex; gap:1.8rem; font-size:13.5px;}
+  .nav-links a{color:var(--text-muted); text-decoration:none;}
+  .nav-links a:hover, .nav-links a.current{color:var(--navy);}
+  .nav-links a.current{font-weight:600;}
+  .nav-cta{font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.55rem 1.1rem; border-radius:8px; background:var(--gold-deep); color:#fff; text-decoration:none;}
+  .nav-cta:hover{background:#7a481e;}
+  @media (max-width:760px){ .nav-links{display:none;} }
+
+  .article-head{max-width:720px; margin:3rem auto 0; padding:0 1.5rem; text-align:center;}
+  .back-link{font-family:var(--mono); font-size:12px; color:var(--text-muted); text-decoration:none; display:inline-block; margin-bottom:1.6rem;}
+  .back-link:hover{color:var(--navy);}
+  .art-eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.12em; text-transform:uppercase; color:var(--navy); font-weight:600; margin:0 0 1rem;}
+  .art-title{font-family:var(--serif); font-weight:800; font-size:clamp(30px,5vw,46px); line-height:1.12; color:var(--ink); margin:0 0 1.2rem;}
+  .art-dek{font-family:var(--serif); font-style:italic; font-size:18px; line-height:1.55; color:var(--text-muted); margin:0 0 1.5rem;}
+  .art-byline{font-family:var(--sans); font-size:12.5px; color:var(--text-muted); padding-bottom:2rem; border-bottom:1px solid var(--border);}
+  .art-byline b{color:var(--text);}
+
+  .art-body{max-width:680px; margin:0 auto; padding:2.6rem 1.5rem 1rem; font-family:var(--serif); font-size:18px; line-height:1.75; color:var(--text);}
+  .art-body p{margin:0 0 1.5rem;}
+  .art-body p:first-of-type::first-letter{
+    font-family:var(--serif); font-weight:700; font-size:64px; float:left; line-height:.8; padding:.1rem .5rem 0 0; color:var(--gold-deep);
+  }
+  .art-body h2{font-family:var(--serif); font-weight:700; font-size:26px; color:var(--ink); margin:2.4rem 0 1rem;}
+  .art-body h3{font-family:var(--sans); font-weight:700; font-size:15px; text-transform:uppercase; letter-spacing:.03em; color:var(--navy); margin:1.8rem 0 .8rem;}
+  .art-body ul, .art-body ol{margin:0 0 1.5rem; padding-left:1.4rem;}
+  .art-body li{margin-bottom:.5rem;}
+  .pull-quote{
+    font-family:var(--serif); font-style:italic; font-weight:600; font-size:24px; line-height:1.4; color:var(--ink);
+    border-left:4px solid var(--gold); padding:.2rem 0 .2rem 1.6rem; margin:2.2rem 0;
+  }
+  .info-box{
+    background:var(--white); border:1px solid var(--border); border-left:4px solid var(--navy); border-radius:8px;
+    padding:1.3rem 1.5rem; margin:2rem 0; font-family:var(--sans); font-size:14.5px; line-height:1.65;
+  }
+  .info-box strong{color:var(--navy-deep);}
+  .takeaways{background:var(--ink); border-radius:14px; padding:2rem 2.2rem; margin:2.6rem 0; color:#fff;}
+  .takeaways h3{font-family:var(--sans); font-size:12px; text-transform:uppercase; letter-spacing:.08em; color:#8FC9DD; margin:0 0 1rem;}
+  .takeaways ul{margin:0; padding-left:1.2rem; font-family:var(--sans); font-size:14.5px; line-height:1.7; color:#DCE4E6;}
+  .takeaways li{margin-bottom:.5rem;}
+
+  .cta-strip{max-width:680px; margin:3rem auto 4rem; padding:0 1.5rem;}
+  .cta-inner{background:var(--white); border:1px solid var(--border); border-radius:14px; padding:1.8rem 2rem; text-align:center;}
+  .cta-inner p{font-family:var(--sans); font-size:14px; color:var(--text-muted); margin:0 0 1rem;}
+  .cta-inner a{display:inline-block; background:var(--gold); color:#fff; font-family:var(--sans); font-weight:600; font-size:14px; padding:.75rem 1.5rem; border-radius:8px; text-decoration:none;}
+  .cta-inner a:hover{background:var(--gold-deep);}
+
+  footer{border-top:1px solid var(--border); padding:2.2rem 0; text-align:center; font-size:12px; color:var(--text-muted);}
+</style>
+<script src="analytics.js" defer></script>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.75 2C6.75 1.31 7.31 0.75 8 0.75H13.5L18 5.25V21.25C18 21.94 17.44 22.5 16.75 22.5H8C7.31 22.5 6.75 21.94 6.75 21.25V2Z" fill="#0E7FA6"/><path d="M13.5 0.75V4.25C13.5 4.66 13.84 5 14.25 5H18L13.5 0.75Z" fill="#B4652E"/><path d="M9.25 13.25L11.25 15.25L15 10.75" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>IT Documentgenerator</a>
+    <div class="nav-links">
+      <a href="index.html#documenten">Documenten</a>
+      <a href="kennisbank.html" class="current">Kennisbank</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="over-mij.html">Over mij</a>
+    </div>
+    <a href="sla-generator.html" class="nav-cta">Start je document</a>
+  </div>
+</nav>
+
+<div class="article-head">
+  <a href="kennisbank.html" class="back-link">← Terug naar de kennisbank</a>
+  <p class="art-eyebrow">Welzijn &amp; werkdruk</p>
+  <h1 class="art-title">Burn-out herkennen voordat het te laat is</h1>
+  <p class="art-dek">De signalen die vaak worden genegeerd — niet omdat ze onzichtbaar zijn, maar omdat we ze makkelijk wegverklaren als "gewoon een drukke periode".</p>
+  <p class="art-byline">Door <b>de redactie</b> · 5 minuten leestijd</p>
+</div>
+
+<article class="art-body">
+  <p>Burn-out ontstaat zelden van de ene op de andere dag. Het is meestal het resultaat van een geleidelijk proces, waarbij vroege signalen keer op keer worden weggeredeneerd: "het is gewoon een drukke periode", "na dit project wordt het rustiger", "iedereen heeft weleens een slechte week". Dat wegredeneren is niet naïef — het is een heel begrijpelijke, menselijke reactie op signalen die zich niet altijd dramatisch aandienen.</p>
+
+  <p>Dit artikel geeft geen diagnose en is geen vervanging voor professioneel advies. Het beschrijft wel de patronen die in de vakliteratuur en de praktijk het vaakst worden genoemd als vroege signalen — juist omdat vroege herkenning het verschil kan maken tussen bijsturen en volledig uitvallen.</p>
+
+  <h2>Het patroon achter de signalen</h2>
+  <p>Waar burn-out-onderzoek het vaakst op wijst, is een combinatie van drie elementen: aanhoudende uitputting die niet overgaat met een gewoon weekend rust, een groeiende afstand of cynisme ten opzichte van het werk, en het gevoel dat je eigen inspanningen er steeds minder toe doen. Geen van deze drie op zichzelf hoeft veel te betekenen — de combinatie, aanhoudend over meerdere weken, is waar het patroon relevant wordt.</p>
+
+  <blockquote class="pull-quote">Eén vermoeiende week is normaal. Weken die allemaal op elkaar beginnen te lijken, is een signaal.</blockquote>
+
+  <h2>Signalen die makkelijk worden weggeredeneerd</h2>
+  <p>Een aantal signalen wordt in de praktijk structureel onderschat, juist omdat ze zich geleidelijk opbouwen in plaats van plotseling optreden.</p>
+
+  <h3>Signalen om serieus te nemen</h3>
+  <ul>
+    <li>Vermoeidheid die niet wezenlijk afneemt na een weekend of korte vakantie</li>
+    <li>Toenemende prikkelbaarheid bij dingen die vroeger geen probleem waren</li>
+    <li>Een groeiend gevoel van afstand of onverschilligheid ten opzichte van werk dat vroeger voldoening gaf</li>
+    <li>Concentratieproblemen die het lastiger maken om taken af te ronden die eerder vanzelfsprekend waren</li>
+    <li>Lichamelijke klachten zonder duidelijke medische oorzaak (hoofdpijn, spierspanning, slaapproblemen)</li>
+    <li>Het gevoel dat je "aan" moet blijven staan, zelfs tijdens vrije tijd</li>
+  </ul>
+
+  <div class="info-box">
+    <strong>Belangrijk om te weten:</strong> dit is geen checklist om zelf een diagnose te stellen. Als meerdere van deze signalen herkenbaar zijn en aanhouden, is een gesprek met een huisarts, bedrijfsarts of andere zorgprofessional de aangewezen volgende stap — zij kunnen wél een onderbouwd oordeel geven.
+  </div>
+
+  <h2>Waarom vroege signalering zo lastig is — voor jezelf én voor collega's</h2>
+  <p>Voor jezelf is het lastig omdat de signalen geleidelijk normaal gaan aanvoelen: als vermoeidheid al maanden aanhoudt, wordt het de nieuwe basislijn in plaats van een signaal. Voor collega's en leidinggevenden is het lastig omdat mensen die richting een burn-out gaan, vaak juist harder blijven werken en zich minder snel melden — het beeld van iemand die "gewoon heel toegewijd is" kan een vroeg signaal maskeren in plaats van onthullen.</p>
+
+  <h2>Wat werkt: structureel bespreekbaar maken, niet incidenteel navragen</h2>
+  <p>Op organisatieniveau werkt het beter om werkdruk en welzijn periodiek en structureel bespreekbaar te maken, in plaats van te wachten tot iemand zich meldt of tot er signalen zichtbaar worden. Een cultuur waarin het normaal is om over werkdruk te praten voordat het een probleem wordt, verlaagt de drempel om vroege signalen te bespreken aanzienlijk.</p>
+
+  <div class="takeaways">
+    <h3>In het kort</h3>
+    <ul>
+      <li>Burn-out ontwikkelt zich meestal geleidelijk, via signalen die makkelijk worden weggeredeneerd</li>
+      <li>Aanhoudende uitputting, groeiend cynisme en afnemend gevoel van effectiviteit vormen samen het kernpatroon</li>
+      <li>Mensen die richting een burn-out gaan, melden zich vaak juist minder snel, niet meer</li>
+      <li>Structureel, periodiek bespreekbaar maken van werkdruk werkt beter dan wachten op zichtbare signalen</li>
+    </ul>
+  </div>
+
+  <p>Als je bij jezelf of iemand in je omgeving meerdere van deze signalen herkent, en ze houden al langere tijd aan: dat is een reden om het gesprek aan te gaan — met een professional, een leidinggevende, of gewoon met iemand die je vertrouwt. Vroeg erkennen is geen teken van zwakte; het is precies wat het verschil maakt.</p>
+</article>
+
+<div class="cta-strip">
+  <div class="cta-inner">
+    <p>De generator heeft zelftests voor burn-out, stress en werk-privébalans, als startpunt voor een gesprek — geen diagnose.</p>
+    <a href="sla-generator.html">Bekijk Welzijn &amp; werkdruk →</a>
+  </div>
+</div>
+
+<footer>
+  Javabird79 · KVK 90050150 · BTW NL004789855B21 — Dit artikel is algemene achtergrondinformatie, geen medisch of psychologisch advies. Herken je bij jezelf aanhoudende signalen? Neem contact op met je huisarts of bedrijfsarts.
+</footer>
+<script>
+  // Meet of bezoekers vanuit dit artikel doorklikken naar de generator.
+  document.querySelectorAll('.cta-inner a').forEach(function(link){
+    link.addEventListener('click', function(){
+      if(window.trackEvent) window.trackEvent('Artikel naar generator', {artikel: document.title});
+    });
+  });
+</script>
+
+<!-- ═══ Analytics & cookietoestemming ═══════════════════════════════════
+     Twee systemen tegelijk, met verschillende juridische status:
+
+     1) PLAUSIBLE (privacy-vriendelijk): laadt altijd, geen cookies, geen
+        persoonsgegevens, geen toestemming vereist onder de AVG. Vervang
+        "vervang-dit-domein.nl" hieronder door je eigen domeinnaam zoals
+        geregistreerd bij Plausible — dit vraagt een (betaald) account op
+        https://plausible.io.
+
+     2) GOOGLE ANALYTICS (GA4): plaatst wél een cookie, en laadt daarom pas
+        NA expliciete toestemming via de banner hieronder. Vervang
+        "G-XXXXXXXXXX" door je eigen GA4 Measurement ID — aan te maken via
+        een gratis Google Analytics-account op https://analytics.google.com.
+
+     Beide zijn placeholders: zonder je eigen account-ID's meet dit nog
+     niets. Dit stukje moet, ongewijzigd, op elke pagina van de site staan.
+     ════════════════════════════════════════════════════════════════════ -->
+<script defer data-domain="vervang-dit-domein.nl" src="https://plausible.io/js/script.js"></script>
+
+<div id="cookieConsent" style="display:none; position:fixed; bottom:0; left:0; right:0; z-index:9999; background:#1B2226; color:#fff; padding:1.1rem 1.5rem; font-family:'Inter',sans-serif; font-size:13.5px; box-shadow:0 -4px 20px rgba(0,0,0,.25);">
+  <div style="max-width:920px; margin:0 auto; display:flex; align-items:center; justify-content:space-between; gap:1.5rem; flex-wrap:wrap;">
+    <p style="margin:0; line-height:1.55; flex:1; min-width:240px; color:#DCE4E6;">We gebruiken Google Analytics om te zien welke documenten en artikelen het meest gebruikt worden. Dit plaatst een cookie. Ga je akkoord?</p>
+    <div style="display:flex; gap:.6rem; flex-shrink:0;">
+      <button id="cookieDecline" style="padding:.55rem 1.1rem; border-radius:6px; border:1px solid #5C7278; background:transparent; color:#fff; cursor:pointer; font-size:13px; font-family:inherit;">Weigeren</button>
+      <button id="cookieAccept" style="padding:.55rem 1.1rem; border-radius:6px; border:none; background:#C17A3D; color:#fff; cursor:pointer; font-weight:600; font-size:13px; font-family:inherit;">Accepteren</button>
+    </div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var GA_MEASUREMENT_ID = 'G-XXXXXXXXXX'; // ← vervang door je eigen GA4 Measurement ID
+  function loadGA(){
+    if(window.__gaLoaded) return;
+    window.__gaLoaded = true;
+    var s = document.createElement('script');
+    s.async = true;
+    s.src = 'https://www.googletagmanager.com/gtag/js?id=' + GA_MEASUREMENT_ID;
+    document.head.appendChild(s);
+    window.dataLayer = window.dataLayer || [];
+    window.gtag = function(){ window.dataLayer.push(arguments); };
+    window.gtag('js', new Date());
+    window.gtag('config', GA_MEASUREMENT_ID);
+  }
+  function init(){
+    var consent = localStorage.getItem('cookieConsent');
+    if(consent === 'accepted'){ loadGA(); return; }
+    if(consent === 'declined'){ return; }
+    var banner = document.getElementById('cookieConsent');
+    if(!banner) return;
+    banner.style.display = 'block';
+    document.getElementById('cookieAccept').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'accepted');
+      banner.style.display = 'none';
+      loadGA();
+    });
+    document.getElementById('cookieDecline').addEventListener('click', function(){
+      localStorage.setItem('cookieConsent', 'declined');
+      banner.style.display = 'none';
+    });
+  }
+  if(document.readyState === 'loading'){ document.addEventListener('DOMContentLoaded', init); }
+  else { init(); }
+
+  // Gedeelde helper om events te loggen bij beide systemen tegelijk —
+  // werkt overal waar dit script staat, ongeacht of GA al is geladen.
+  window.trackEvent = function(name, props){
+    if(window.plausible) window.plausible(name, {props: props || {}});
+    if(window.gtag) window.gtag('event', name, props || {});
+  };
+})();
+</script>
+<!-- ═══ Einde analytics & cookietoestemming ═══════════════════════════ -->
+
+
+</body>
+</html>
