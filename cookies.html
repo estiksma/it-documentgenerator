@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cookieverklaring — IT Documentgenerator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0E7FA6; --navy-deep: #0A4E66; --gold: #C17A3D; --gold-deep: #955B26;
+    --bg: #F7F5F0; --white: #FFFFFF; --text: #142B30; --text-muted: #5C7278; --border: #DCE4E6;
+    --serif: 'Source Serif 4', serif; --sans: 'Inter', sans-serif; --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+  a{color:inherit;}
+  nav{position:sticky; top:0; z-index:200; background:rgba(247,245,240,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1120px; margin:0 auto;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--navy); display:flex; align-items:center; gap:8px; text-decoration:none;}
+  .logo-mark{width:24px; height:24px; flex-shrink:0;}
+  .nav-links{display:flex; gap:1.8rem; font-size:13.5px;}
+  .nav-links a{color:var(--text-muted); text-decoration:none;}
+  .nav-links a:hover, .nav-links a.current{color:var(--navy);}
+  .nav-links a.current{font-weight:600;}
+  @media (max-width:820px){ .nav-links{display:none;} }
+  .nav-cta{font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.55rem 1.1rem; border-radius:8px; background:var(--gold-deep); color:#fff; text-decoration:none;}
+  .nav-cta:hover{background:#7a481e;}
+
+  .doc-head{max-width:720px; margin:3rem auto 0; padding:0 1.5rem;}
+  .doc-head .eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-deep); font-weight:600; margin:0 0 .8rem;}
+  .doc-head h1{font-family:var(--serif); font-weight:700; font-size:clamp(28px,4.5vw,40px); color:var(--navy-deep); margin:0 0 .6rem;}
+  .doc-head .meta{font-size:13px; color:var(--text-muted); padding-bottom:1.8rem; border-bottom:1px solid var(--border);}
+
+  .doc-body{max-width:720px; margin:0 auto; padding:2rem 1.5rem 4rem; font-size:15.5px; line-height:1.75;}
+  .doc-body h2{font-family:var(--serif); font-weight:700; font-size:21px; color:var(--navy-deep); margin:2.2rem 0 .9rem;}
+  .doc-body h2 .num{font-family:var(--mono); font-size:14px; color:var(--gold-deep); margin-right:.5rem;}
+  .doc-body p{color:var(--text); margin:0 0 1.1rem;}
+  .doc-body ul, .doc-body ol{margin:0 0 1.1rem; padding-left:1.4rem; color:var(--text);}
+  .doc-body li{margin-bottom:.4rem;}
+  .doc-body strong{color:var(--navy-deep);}
+  .toc{background:var(--white); border:1px solid var(--border); border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:2rem;}
+  .toc p{font-family:var(--sans); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted); margin:0 0 .7rem;}
+  .toc ol{margin:0; padding-left:1.3rem; font-size:13.5px; columns:2; column-gap:1.5rem;}
+  .toc li{margin-bottom:.35rem;}
+  .toc a{color:var(--navy); text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+  .notice{
+    background:#FBEEE6; border:1px solid #E3B98C; border-left:4px solid var(--gold-deep); border-radius:8px;
+    padding:1.1rem 1.4rem; margin:0 0 2rem; font-size:13.5px; line-height:1.6;
+  }
+  .notice strong{color:var(--gold-deep);}
+  .cookie-table{width:100%; border-collapse:collapse; margin:1rem 0 1.6rem; font-size:13.5px;}
+  .cookie-table th{background:var(--navy-deep); color:#fff; text-align:left; padding:.6rem .8rem; font-weight:600;}
+  .cookie-table td{padding:.6rem .8rem; border-bottom:1px solid var(--border); vertical-align:top;}
+  .cookie-table tr:nth-child(even) td{background:var(--white);}
+  .tag{display:inline-block; font-family:var(--mono); font-size:10.5px; font-weight:700; padding:.15rem .5rem; border-radius:12px;}
+  .tag.no-consent{background:#E1F0F5; color:var(--navy-deep);}
+  .tag.consent{background:#FBEEE6; color:var(--gold-deep);}
+  .manage-box{
+    background:var(--white); border:1px solid var(--border); border-radius:10px; padding:1.3rem 1.5rem; margin:1.5rem 0;
+  }
+  .manage-box button{
+    font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.6rem 1.1rem; border-radius:8px;
+    background:var(--navy); color:#fff; border:none; cursor:pointer; margin-top:.6rem;
+  }
+  .manage-box button:hover{background:var(--navy-deep);}
+
+  footer{border-top:1px solid var(--border); padding:2.2rem 0; text-align:center; font-size:12px; color:var(--text-muted);}
+  footer a{color:var(--navy); text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.75 2C6.75 1.31 7.31 0.75 8 0.75H13.5L18 5.25V21.25C18 21.94 17.44 22.5 16.75 22.5H8C7.31 22.5 6.75 21.94 6.75 21.25V2Z" fill="#0E7FA6"/><path d="M13.5 0.75V4.25C13.5 4.66 13.84 5 14.25 5H18L13.5 0.75Z" fill="#B4652E"/><path d="M9.25 13.25L11.25 15.25L15 10.75" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>IT Documentgenerator</a>
+    <div class="nav-links">
+      <a href="index.html#documenten">Documenten</a>
+      <a href="kennisbank.html">Kennisbank</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="over-mij.html">Over mij</a>
+    </div>
+    <a href="sla-generator.html" class="nav-cta">Start je document</a>
+  </div>
+</nav>
+
+<div class="doc-head">
+  <p class="eyebrow">Juridisch</p>
+  <h1>Cookieverklaring</h1>
+  <p class="meta">Laatst bijgewerkt: juli 2026 · Van toepassing op alle pagina's van deze website</p>
+</div>
+
+<div class="doc-body">
+
+  <div class="notice">
+    <strong>Kort samengevat:</strong> deze site gebruikt hoofdzakelijk cookieloze analytics, waarvoor geen toestemming nodig is. Eén los systeem (Google Analytics) gebruikt wél cookies, en start daarom pas na jouw expliciete toestemming.
+  </div>
+
+  <div class="toc">
+    <p>Inhoud</p>
+    <ol>
+      <li><a href="#wat">Wat zijn cookies?</a></li>
+      <li><a href="#welke">Welke cookies gebruiken we?</a></li>
+      <li><a href="#toestemming">Toestemming &amp; beheer</a></li>
+      <li><a href="#bewaartermijn">Bewaartermijnen</a></li>
+      <li><a href="#derden">Cookies van derden</a></li>
+      <li><a href="#wijzigingen">Wijzigingen</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </div>
+
+  <h2 id="wat"><span class="num">1.</span>Wat zijn cookies?</h2>
+  <p>Cookies zijn kleine tekstbestanden die een website op je apparaat kan opslaan, bijvoorbeeld om je voorkeuren te onthouden of om websitegebruik te meten. Niet elke techniek die websitegebruik meet, gebruikt daadwerkelijk cookies — sommige, zoals Plausible (zie hieronder), meten geanonimiseerd zonder ook maar iets op je apparaat op te slaan.</p>
+
+  <h2 id="welke"><span class="num">2.</span>Welke cookies gebruiken we?</h2>
+  <table class="cookie-table">
+    <tr><th>Dienst</th><th>Doel</th><th>Cookies?</th><th>Toestemming nodig?</th></tr>
+    <tr>
+      <td><strong>Plausible Analytics</strong></td>
+      <td>Meet algemeen websitegebruik (bezoekersaantallen, populaire pagina's) op een geanonimiseerde, privacy-vriendelijke manier</td>
+      <td>Nee</td>
+      <td><span class="tag no-consent">Niet nodig</span></td>
+    </tr>
+    <tr>
+      <td><strong>Google Analytics (GA4)</strong></td>
+      <td>Meet websitegebruik in meer detail, inclusief individueel bezoekersgedrag over meerdere paginabezoeken heen</td>
+      <td>Ja</td>
+      <td><span class="tag consent">Alleen na toestemming</span></td>
+    </tr>
+  </table>
+  <p>Plausible verwerkt geen persoonsgegevens en slaat niets op je apparaat op — deze dienst valt daarmee buiten de reikwijdte van de cookieregels uit de Telecommunicatiewet en de AVG voor wat betreft toestemmingsplicht. Google Analytics gebruikt wél cookies om bezoekers (geanonimiseerd) te kunnen herkennen over meerdere bezoeken heen, en start daarom pas nadat je hier expliciet toestemming voor hebt gegeven via de cookiebanner.</p>
+
+  <h2 id="toestemming"><span class="num">3.</span>Toestemming &amp; beheer</h2>
+  <p>Bij je eerste bezoek aan deze website verschijnt een banner waarin je kunt kiezen of je Google Analytics wel of niet toestaat. Kies je "Weigeren", dan wordt Google Analytics niet geladen en registreert deze site alleen via het cookieloze Plausible. Je keuze wordt onthouden in je browser, zodat de banner niet bij elk bezoek opnieuw verschijnt.</p>
+
+  <div class="manage-box">
+    <p style="margin:0 0 .3rem; font-weight:600;">Je voorkeur wijzigen</p>
+    <p style="margin:0; font-size:13.5px; color:var(--text-muted);">Wil je je eerder gemaakte keuze intrekken of aanpassen? Klik op onderstaande knop om je voorkeur te wissen — bij je volgende paginabezoek verschijnt de cookiebanner dan opnieuw.</p>
+    <button type="button" id="resetConsentBtn">Cookievoorkeur wissen</button>
+    <p id="resetConfirm" style="display:none; margin:.6rem 0 0; font-size:13px; color:var(--navy-deep); font-weight:600;">Gelukt — ververs deze pagina of bezoek een andere pagina om de banner opnieuw te zien.</p>
+  </div>
+
+  <p>Je kunt cookies ook altijd via je eigen browserinstellingen weigeren of verwijderen. Let op: dit is een browserbrede instelling en werkt los van de keuze die je op deze site maakt.</p>
+
+  <h2 id="bewaartermijn"><span class="num">4.</span>Bewaartermijnen</h2>
+  <p>Google Analytics-cookies worden, afhankelijk van het cookietype, bewaard tussen 24 uur en 2 jaar. Je eigen keuze (wel/niet akkoord met Google Analytics) wordt lokaal in je browser onthouden totdat je deze zelf wist, via de knop hierboven of via je browserinstellingen.</p>
+
+  <h2 id="derden"><span class="num">5.</span>Cookies van derden</h2>
+  <p>Deze website laadt lettertypen in via Google Fonts. Afhankelijk van hoe deze zijn ingeladen, kan dit een verzoek naar servers van Google met zich meebrengen; dit betreft doorgaans geen cookies, maar wel een technische verbinding met een derde partij. Voor de exacte werkwijze van Google Fonts verwijzen we naar het privacybeleid van Google.</p>
+
+  <h2 id="wijzigingen"><span class="num">6.</span>Wijzigingen</h2>
+  <p>Deze cookieverklaring kan worden aangepast, bijvoorbeeld wanneer er nieuwe meetdiensten worden toegevoegd. De meest actuele versie staat steeds op deze pagina.</p>
+
+  <h2 id="contact"><span class="num">7.</span>Contact</h2>
+  <p>Vragen over deze cookieverklaring kunnen worden gericht aan <a href="mailto:estiksma@gmail.com">estiksma@gmail.com</a>.</p>
+
+</div>
+
+<footer>
+  Javabird79 · KVK 90050150 · BTW NL004789855B21 · <a href="gebruiksvoorwaarden.html">Gebruiksvoorwaarden</a> · <a href="algemene-voorwaarden.html">Algemene Voorwaarden</a>
+</footer>
+
+<script>
+  document.getElementById('resetConsentBtn').addEventListener('click', function(){
+    localStorage.removeItem('cookieConsent');
+    document.getElementById('resetConfirm').style.display = 'block';
+  });
+</script>
+
+</body>
+</html>

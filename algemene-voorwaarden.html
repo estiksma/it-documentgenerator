@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Algemene Voorwaarden — IT Documentgenerator</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:wght@500;600;700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy: #0E7FA6; --navy-deep: #0A4E66; --gold: #C17A3D; --gold-deep: #955B26;
+    --bg: #F7F5F0; --white: #FFFFFF; --text: #142B30; --text-muted: #5C7278; --border: #DCE4E6;
+    --serif: 'Source Serif 4', serif; --sans: 'Inter', sans-serif; --mono: 'IBM Plex Mono', monospace;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0; background:var(--bg); color:var(--text); font-family:var(--sans); line-height:1.6;}
+  a{color:inherit;}
+  nav{position:sticky; top:0; z-index:200; background:rgba(247,245,240,.94); backdrop-filter:blur(10px); border-bottom:1px solid var(--border);}
+  .nav-inner{display:flex; align-items:center; justify-content:space-between; padding:1rem 1.5rem; max-width:1120px; margin:0 auto;}
+  .logo{font-family:var(--serif); font-weight:600; font-size:18px; color:var(--navy); display:flex; align-items:center; gap:8px; text-decoration:none;}
+  .logo-mark{width:24px; height:24px; flex-shrink:0;}
+  .nav-links{display:flex; gap:1.8rem; font-size:13.5px;}
+  .nav-links a{color:var(--text-muted); text-decoration:none;}
+  .nav-links a:hover, .nav-links a.current{color:var(--navy);}
+  .nav-links a.current{font-weight:600;}
+  @media (max-width:820px){ .nav-links{display:none;} }
+  .nav-cta{font-family:var(--sans); font-weight:600; font-size:13.5px; padding:.55rem 1.1rem; border-radius:8px; background:var(--gold-deep); color:#fff; text-decoration:none;}
+  .nav-cta:hover{background:#7a481e;}
+
+  .doc-head{max-width:720px; margin:3rem auto 0; padding:0 1.5rem;}
+  .doc-head .eyebrow{font-family:var(--mono); font-size:11.5px; letter-spacing:.1em; text-transform:uppercase; color:var(--gold-deep); font-weight:600; margin:0 0 .8rem;}
+  .doc-head h1{font-family:var(--serif); font-weight:700; font-size:clamp(28px,4.5vw,40px); color:var(--navy-deep); margin:0 0 .6rem;}
+  .doc-head .meta{font-size:13px; color:var(--text-muted); padding-bottom:1.8rem; border-bottom:1px solid var(--border);}
+
+  .doc-body{max-width:720px; margin:0 auto; padding:2rem 1.5rem 4rem; font-size:15.5px; line-height:1.75;}
+  .doc-body h2{font-family:var(--serif); font-weight:700; font-size:21px; color:var(--navy-deep); margin:2.2rem 0 .9rem;}
+  .doc-body h2 .num{font-family:var(--mono); font-size:14px; color:var(--gold-deep); margin-right:.5rem;}
+  .doc-body p{color:var(--text); margin:0 0 1.1rem;}
+  .doc-body ul, .doc-body ol{margin:0 0 1.1rem; padding-left:1.4rem; color:var(--text);}
+  .doc-body li{margin-bottom:.4rem;}
+  .doc-body strong{color:var(--navy-deep);}
+  .toc{background:var(--white); border:1px solid var(--border); border-radius:10px; padding:1.3rem 1.5rem; margin-bottom:2rem;}
+  .toc p{font-family:var(--sans); font-size:12px; font-weight:700; text-transform:uppercase; letter-spacing:.05em; color:var(--text-muted); margin:0 0 .7rem;}
+  .toc ol{margin:0; padding-left:1.3rem; font-size:13.5px; columns:2; column-gap:1.5rem;}
+  .toc li{margin-bottom:.35rem;}
+  .toc a{color:var(--navy); text-decoration:none;}
+  .toc a:hover{text-decoration:underline;}
+  .notice{
+    background:#FBEEE6; border:1px solid #E3B98C; border-left:4px solid var(--gold-deep); border-radius:8px;
+    padding:1.1rem 1.4rem; margin:0 0 2rem; font-size:13.5px; line-height:1.6;
+  }
+  .notice strong{color:var(--gold-deep);}
+
+  footer{border-top:1px solid var(--border); padding:2.2rem 0; text-align:center; font-size:12px; color:var(--text-muted);}
+  footer a{color:var(--navy); text-decoration:none;}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <a href="index.html" class="logo"><svg class="logo-mark" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M6.75 2C6.75 1.31 7.31 0.75 8 0.75H13.5L18 5.25V21.25C18 21.94 17.44 22.5 16.75 22.5H8C7.31 22.5 6.75 21.94 6.75 21.25V2Z" fill="#0E7FA6"/><path d="M13.5 0.75V4.25C13.5 4.66 13.84 5 14.25 5H18L13.5 0.75Z" fill="#B4652E"/><path d="M9.25 13.25L11.25 15.25L15 10.75" stroke="#ffffff" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/></svg>IT Documentgenerator</a>
+    <div class="nav-links">
+      <a href="index.html#documenten">Documenten</a>
+      <a href="kennisbank.html">Kennisbank</a>
+      <a href="diensten.html">Diensten</a>
+      <a href="over-mij.html">Over mij</a>
+    </div>
+    <a href="sla-generator.html" class="nav-cta">Start je document</a>
+  </div>
+</nav>
+
+<div class="doc-head">
+  <p class="eyebrow">Juridisch</p>
+  <h1>Algemene Voorwaarden</h1>
+  <p class="meta">Laatst bijgewerkt: juli 2026 · Van toepassing op de bemiddelingsdienst zoals aangeboden via de pagina "Diensten"</p>
+</div>
+
+<div class="doc-body">
+
+  <div class="notice">
+    <strong>Belangrijk om vooraf te weten:</strong> dit zijn generieke, gangbare algemene voorwaarden — geen door een jurist geverifieerd document. Voor een waterdichte juridische borging is beoordeling door een gekwalificeerde jurist aan te raden, zeker naarmate het aantal bemiddelingen toeneemt.
+  </div>
+
+  <div class="toc">
+    <p>Inhoud</p>
+    <ol>
+      <li><a href="#definities">Definities</a></li>
+      <li><a href="#toepasselijkheid">Toepasselijkheid</a></li>
+      <li><a href="#aanbod">Aanbod &amp; totstandkoming</a></li>
+      <li><a href="#uitvoering">Uitvoering van de bemiddeling</a></li>
+      <li><a href="#verplichtingen">Verplichtingen van de opdrachtgever</a></li>
+      <li><a href="#tarieven">Tarieven &amp; bemiddelingsfee</a></li>
+      <li><a href="#betaling">Betaling</a></li>
+      <li><a href="#aansprakelijkheid">Aansprakelijkheid</a></li>
+      <li><a href="#overmacht">Overmacht</a></li>
+      <li><a href="#geheimhouding">Geheimhouding</a></li>
+      <li><a href="#ie">Intellectueel eigendom</a></li>
+      <li><a href="#klachten">Klachten</a></li>
+      <li><a href="#duur">Duur &amp; beëindiging</a></li>
+      <li><a href="#recht">Toepasselijk recht &amp; geschillen</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ol>
+  </div>
+
+  <h2 id="definities"><span class="num">1.</span>Definities</h2>
+  <ul>
+    <li><strong>Aanbieder:</strong> Javabird79 (Esther Stiksma), KVK 90050150, BTW NL004789855B21;</li>
+    <li><strong>Opdrachtgever:</strong> de natuurlijke of rechtspersoon die via de pagina "Diensten" een aanvraag indient bij de Aanbieder;</li>
+    <li><strong>Freelancer:</strong> de zelfstandige professional (zzp'er) uit het netwerk van de Aanbieder, die na bemiddeling de daadwerkelijke opdracht voor de Opdrachtgever uitvoert;</li>
+    <li><strong>Bemiddeling:</strong> de dienst waarbij de Aanbieder de Opdrachtgever in contact brengt met een geschikte Freelancer.</li>
+  </ul>
+
+  <h2 id="toepasselijkheid"><span class="num">2.</span>Toepasselijkheid</h2>
+  <p>Deze algemene voorwaarden zijn van toepassing op iedere aanvraag, offerte en bemiddeling die via de pagina "Diensten" van de Aanbieder tot stand komt. Afwijkingen van deze voorwaarden zijn alleen geldig indien schriftelijk overeengekomen. Deze voorwaarden staan los van de <a href="gebruiksvoorwaarden.html">gebruiksvoorwaarden</a> die gelden voor het gebruik van de gratis generator en kennisbank.</p>
+
+  <h2 id="aanbod"><span class="num">3.</span>Aanbod &amp; totstandkoming</h2>
+  <p>Een via het contactformulier ingediende aanvraag is vrijblijvend en verplicht geen van beide partijen tot iets. Een bemiddelingsovereenkomst komt pas tot stand op het moment dat de Aanbieder en de Opdrachtgever samen schriftelijk (waaronder begrepen per e-mail) hebben bevestigd dat de Bemiddeling wordt gestart, met daarin de relevante afspraken over scope, tarief en bemiddelingsfee.</p>
+
+  <h2 id="uitvoering"><span class="num">4.</span>Uitvoering van de bemiddeling</h2>
+  <p>De Aanbieder spant zich in om een passende Freelancer te vinden voor de vraag van de Opdrachtgever, op basis van een zorgvuldige selectie uit het eigen netwerk. De Aanbieder garandeert niet dat er te allen tijde een geschikte Freelancer beschikbaar is, en kan een aanvraag afwijzen zonder opgaaf van reden.</p>
+  <p>Na de match komt de daadwerkelijke opdracht tot uitvoering van het werk rechtstreeks tot stand tussen de Opdrachtgever en de Freelancer. De Aanbieder is bij die uitvoeringsovereenkomst geen partij.</p>
+
+  <h2 id="verplichtingen"><span class="num">5.</span>Verplichtingen van de opdrachtgever</h2>
+  <p>De Opdrachtgever verstrekt tijdig alle informatie die redelijkerwijs nodig is om een passende match te maken, en werkt mee aan een zorgvuldige totstandkoming van de overeenkomst met de Freelancer.</p>
+
+  <h2 id="tarieven"><span class="num">6.</span>Tarieven &amp; bemiddelingsfee</h2>
+  <p>De Freelancer bepaalt zijn of haar eigen tarief voor de uit te voeren opdracht. De Aanbieder ontvangt voor de Bemiddeling een fee, doorgaans <strong>10 tot 15% van de opdrachtwaarde</strong>, die voorafgaand aan de start van de opdracht transparant met beide partijen wordt besproken en schriftelijk wordt bevestigd.</p>
+
+  <h2 id="betaling"><span class="num">7.</span>Betaling</h2>
+  <p>Betaling van het tarief van de Freelancer verloopt rechtstreeks tussen de Opdrachtgever en de Freelancer, tenzij per geval schriftelijk anders is overeengekomen. De bemiddelingsfee van de Aanbieder wordt apart gefactureerd, met een betaaltermijn van 14 dagen na factuurdatum, tenzij anders overeengekomen.</p>
+
+  <h2 id="aansprakelijkheid"><span class="num">8.</span>Aansprakelijkheid</h2>
+  <p>De Aanbieder treedt uitsluitend op als bemiddelaar en aanvaardt geen aansprakelijkheid voor de uitvoering, kwaliteit, tijdigheid of gevolgen van het werk van de Freelancer, noch voor geschillen tussen de Opdrachtgever en de Freelancer. Voor zover de Aanbieder wel aansprakelijk mocht zijn — bijvoorbeeld voor een tekortkoming in de Bemiddeling zelf — is deze aansprakelijkheid beperkt tot maximaal het bedrag van de door de Aanbieder voor de betreffende Bemiddeling ontvangen fee, tenzij sprake is van opzet of bewuste roekeloosheid.</p>
+
+  <h2 id="overmacht"><span class="num">9.</span>Overmacht</h2>
+  <p>Bij overmacht — omstandigheden buiten de redelijke invloed van de Aanbieder, zoals ziekte, technische storingen of overheidsmaatregelen — is de Aanbieder niet gehouden tot nakoming van enige verplichting, zolang de overmachtssituatie voortduurt.</p>
+
+  <h2 id="geheimhouding"><span class="num">10.</span>Geheimhouding</h2>
+  <p>Beide partijen behandelen vertrouwelijke informatie die in het kader van de Bemiddeling wordt uitgewisseld, vertrouwelijk, en delen deze niet met derden zonder toestemming, behoudens een wettelijke verplichting daartoe.</p>
+
+  <h2 id="ie"><span class="num">11.</span>Intellectueel eigendom</h2>
+  <p>Alle intellectuele eigendomsrechten op de website, de generator en de bemiddelingsdienst zelf berusten bij de Aanbieder. Werk dat door een Freelancer voor een Opdrachtgever wordt opgeleverd, valt onder de afspraken die de Opdrachtgever en de Freelancer daarover rechtstreeks maken.</p>
+
+  <h2 id="klachten"><span class="num">12.</span>Klachten</h2>
+  <p>Klachten over de Bemiddeling zelf (niet over de uitvoering door de Freelancer) kunnen worden gericht aan <a href="mailto:estiksma@gmail.com">estiksma@gmail.com</a>. De Aanbieder reageert binnen redelijke termijn, doorgaans binnen 10 werkdagen.</p>
+
+  <h2 id="duur"><span class="num">13.</span>Duur &amp; beëindiging</h2>
+  <p>De Bemiddeling eindigt van rechtswege zodra de match tussen Opdrachtgever en Freelancer tot stand is gekomen en de bemiddelingsfee is voldaan, tenzij partijen anders overeenkomen (bijvoorbeeld bij doorlopende bemiddeling voor meerdere opdrachten).</p>
+
+  <h2 id="recht"><span class="num">14.</span>Toepasselijk recht &amp; geschillen</h2>
+  <p>Op deze algemene voorwaarden is Nederlands recht van toepassing. Geschillen worden bij voorkeur in onderling overleg opgelost; bij uitblijven daarvan is de bevoegde Nederlandse rechter aangewezen.</p>
+
+  <h2 id="contact"><span class="num">15.</span>Contact</h2>
+  <p>Vragen over deze algemene voorwaarden kunnen worden gericht aan <a href="mailto:estiksma@gmail.com">estiksma@gmail.com</a>, of via het <a href="diensten.html">contactformulier</a>.</p>
+
+</div>
+
+<footer>
+  Javabird79 · KVK 90050150 · BTW NL004789855B21 · <a href="gebruiksvoorwaarden.html">Gebruiksvoorwaarden</a> · <a href="cookies.html">Cookieverklaring</a>
+</footer>
+
+</body>
+</html>
